@@ -9,14 +9,10 @@ import jakarta.persistence.*;
 public class Payment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    // @ManyToOne
-    // @JoinColumn(name = "codigo_cliente")
-    // private Customer customer;
-
-    @Column(name = "id_transaccion")
+    @Column(name = "id_transaccion") 
     private String transactionId;
+
     @Column(name = "forma_pago")
     private String paymentForm;
 
@@ -27,25 +23,29 @@ public class Payment {
     @Column(name = "fecha_pago")
     private Date payDay;
 
-    // public Payment(Customer customer, String transactionId, String paymentForm, Double total, Date payDay) {
-    //     this.customer = customer;
-    //     this.transactionId = transactionId;
-    //     this.paymentForm = paymentForm;
-    //     this.total = total;
-    //     this.payDay = payDay;
-    // }
+    @ManyToOne
+    @JoinColumn(name = "codigo_cliente")
+    private Customer customer;
+
+    public Payment(Customer customer, String transactionId, String paymentForm, Double total, Date payDay) {
+        this.customer = customer;
+        this.transactionId = transactionId;
+        this.paymentForm = paymentForm;
+        this.total = total;
+        this.payDay = payDay;
+    }
 
     public Payment() {
 
     }
 
-    // public Customer getCustomer() {
-    //     return customer;
-    // }
+    public Customer getCustomer() {
+        return customer;
+    }
 
-    // public void setCustomer(Customer customer) {
-    //     this.customer = customer;
-    // }
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public String getTransactionId() {
         return transactionId;
@@ -79,10 +79,10 @@ public class Payment {
         this.payDay = payDay;
     }
 
-    // @Override
-    // public String toString() {
-    //     return "Payment [customer=" + customer + ", transactionId=" + transactionId + ", paymentForm=" + paymentForm
-    //             + ", total=" + total + ", payDay=" + payDay + "]";
-    // }
+    @Override
+    public String toString() {
+        return "Payment [customer=" + customer + ", transactionId=" + transactionId + ", paymentForm=" + paymentForm
+                + ", total=" + total + ", payDay=" + payDay + "]";
+    }
 
 }
