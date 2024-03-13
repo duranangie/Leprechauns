@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name="cliente")
 public class Customer {
 
     @Id
@@ -39,9 +40,12 @@ public class Customer {
     @Column(name="limite_credito")
     private Double creditLimit;
     // RELATION MANY TO ONE WITH THE TABLE "empleado"
-    @Column(name="codigo_empleado_rep_ventas")
-    private Long salesRepresentativeCode;
 
+    @Column(name="codigo_empleado_rep_ventas")
+    @ManyToOne
+    @JoinColumn(name = "empleado")
+    private Long salesRepresentativeCode;
+// RELATION ONE TO MANY WITH THE TABLE "pago"
     @OneToMany (mappedBy = "cliente", cascade =CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Payment> payments = new ArrayList<>();
 
