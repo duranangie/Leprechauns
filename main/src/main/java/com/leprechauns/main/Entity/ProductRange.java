@@ -67,7 +67,7 @@ public class ProductRange {
 
     /* DTO */
 
-    ProductRangeDTO toDTO() {
+    public ProductRangeDTO toDTO() {
         ProductRangeDTO dto = new ProductRangeDTO();
         dto.setRange(this.range);
         dto.setTextDescription(this.textDescription != null ? this.textDescription : null);
