@@ -8,25 +8,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.leprechauns.main.Entity.DTO.CustomerDTO;
-import com.leprechauns.main.Service.CustomerService;
+import com.leprechauns.main.Entity.DTO.PaymentDTO;
+import com.leprechauns.main.Service.PaymentService;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/payments")
 @CrossOrigin("*")
-public class CustomerController {
-
-    private final CustomerService customerService;
+public class PaymentController {
+    
+    private final PaymentService paymentService;
 
     @Autowired
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
+    public PaymentController(PaymentService paymentService) {
+        this.paymentService = paymentService;
     }
 
     @GetMapping
-    public List<CustomerDTO> getAllCustomers() {
-        return customerService.getAllCustomers();
+    public List<PaymentDTO> getAllPayments(){
+        return paymentService.getALllPayments();
     }
-
     
 }

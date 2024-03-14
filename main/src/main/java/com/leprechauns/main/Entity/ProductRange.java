@@ -6,10 +6,10 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "gama_producto")
-public class GamaProduct {
+public class ProductRange {
     @Id
     @Column(name = "gama", nullable = false)
-    private String gama;
+    private String range;
 
     @Column(name = "descripcion_texto")
     private String textDescription;
@@ -20,15 +20,15 @@ public class GamaProduct {
     @Column(name = "imagen")
     private String image;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "gamaProduct", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "rangeProduct", cascade = CascadeType.ALL)
     private List<Product> products;
 
-    public String getGama() {
-        return gama;
+    public String getRange() {
+        return range;
     }
 
-    public void setGama(String gama) {
-        this.gama = gama;
+    public void setRange(String range) {
+        this.range = range;
     }
 
     public String getTextDescription() {
@@ -65,7 +65,7 @@ public class GamaProduct {
 
     @Override
     public String toString() {
-        return "GamaProduct [gama=" + gama + ", textDescription=" + textDescription + ", htmlDescription="
+        return "rangeProduct [range=" + range + ", textDescription=" + textDescription + ", htmlDescription="
                 + htmlDescription + ", image=" + image + "]";
     }
 

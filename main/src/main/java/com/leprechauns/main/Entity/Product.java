@@ -14,7 +14,7 @@ public class Product {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "gama", nullable = false)
-    private GamaProduct gamaProduct;
+    private ProductRange rangeProduct;
 
     @Column(name = "dimensiones")
     private String dimensions;
@@ -50,12 +50,12 @@ public class Product {
         this.name = name;
     }
 
-    public GamaProduct getGamaProduct() {
-        return gamaProduct;
+    public ProductRange getRangeProduct() {
+        return rangeProduct;
     }
 
-    public void setGamaProduct(GamaProduct gamaProduct) {
-        this.gamaProduct = gamaProduct;
+    public void setRangeProduct(ProductRange rangeProduct) {
+        this.rangeProduct = rangeProduct;
     }
 
     public String getDimensions() {
@@ -111,7 +111,7 @@ public class Product {
         return "Product{" +
                 "productCode='" + productId + '\'' +
                 ", name='" + name + '\'' +
-                ", gamaProduct=" + gamaProduct +
+                ", rangeProduct=" + rangeProduct +
                 ", dimensions='" + dimensions + '\'' +
                 ", supplier='" + supplier + '\'' +
                 ", description='" + description + '\'' +

@@ -8,25 +8,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.leprechauns.main.Entity.DTO.CustomerDTO;
-import com.leprechauns.main.Service.CustomerService;
+import com.leprechauns.main.Entity.DTO.OfficeDTO;
+import com.leprechauns.main.Service.OfficeService;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/offices")
 @CrossOrigin("*")
-public class CustomerController {
-
-    private final CustomerService customerService;
+public class OfficeController {
+    
+    private final OfficeService officeService;
 
     @Autowired
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
+    public OfficeController(OfficeService officeService) {
+        this.officeService = officeService;
     }
 
     @GetMapping
-    public List<CustomerDTO> getAllCustomers() {
-        return customerService.getAllCustomers();
+    public List<OfficeDTO> getAllOffice(){
+        return officeService.getAllOffices();
     }
-
     
+
 }
