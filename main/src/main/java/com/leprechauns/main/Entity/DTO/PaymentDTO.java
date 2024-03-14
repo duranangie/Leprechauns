@@ -1,4 +1,4 @@
-package com.leprechauns.main.DTO;
+package com.leprechauns.main.Entity.DTO;
 
 import java.sql.Date;
 

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.leprechauns.main.DTO.EmployeeDTO;
 import com.leprechauns.main.Entity.Employee;
+import com.leprechauns.main.Entity.DTO.EmployeeDTO;
 import com.leprechauns.main.Repository.EmployeeRepository;
 
 @Service

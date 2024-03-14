@@ -2,7 +2,7 @@ package com.leprechauns.main.Entity;
 
 import java.sql.Date;
 
-import com.leprechauns.main.DTO.PaymentDTO;
+import com.leprechauns.main.Entity.DTO.PaymentDTO;
 
 import jakarta.persistence.*;
 

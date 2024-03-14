@@ -3,7 +3,7 @@ package com.leprechauns.main.Entity;
 import jakarta.persistence.*;
 import java.util.List;
 
-import com.leprechauns.main.DTO.CustomerDTO;
+import com.leprechauns.main.Entity.DTO.CustomerDTO;
 
 @Entity
 @Table(name = "cliente")

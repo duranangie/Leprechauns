@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.leprechauns.main.DTO.CustomerDTO;
+import com.leprechauns.main.Entity.DTO.CustomerDTO;
 import com.leprechauns.main.Service.CustomerService;
 
 @RestController
