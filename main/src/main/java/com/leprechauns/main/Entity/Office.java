@@ -2,6 +2,8 @@ package com.leprechauns.main.Entity;
 
 import java.util.List;
 
+import com.leprechauns.main.DTO.OfficeDTO;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -108,6 +110,19 @@ public class Office {
     }
 
     /* DTO */
+
+      public OfficeDTO toDTO() {
+        OfficeDTO dto = new OfficeDTO();
+        dto.setOfficeCode(this.officeCode);
+        dto.setCity(this.city);
+        dto.setCountry(this.country);
+        dto.setRegion(this.region);
+        dto.setPostalCode(this.postalCode);
+        dto.setPhone(this.phone);
+        dto.setAddressLine1(this.address1);
+        dto.setAddressLine2(this.address2);
+        return dto;
+    }
     @Override
     public String toString() {
         return "Office [officeCode=" + officeCode + ", city=" + city + ", country=" + country + ", region=" + region
