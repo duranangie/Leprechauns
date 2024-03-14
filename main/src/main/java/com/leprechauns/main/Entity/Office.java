@@ -2,7 +2,7 @@ package com.leprechauns.main.Entity;
 
 import java.util.List;
 
-import com.leprechauns.main.DTO.OfficeDTO;
+import com.leprechauns.main.Entity.DTO.OfficeDTO;
 
 import jakarta.persistence.*;
 

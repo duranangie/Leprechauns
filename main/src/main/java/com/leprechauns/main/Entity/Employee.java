@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-import com.leprechauns.main.DTO.EmployeeDTO;
+import com.leprechauns.main.Entity.DTO.EmployeeDTO;
 
 @Entity
 @Table(name = "empleado")
