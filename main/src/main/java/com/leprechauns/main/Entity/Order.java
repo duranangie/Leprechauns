@@ -1,6 +1,10 @@
 package com.leprechauns.main.Entity;
 
-import java.time.LocalDate;
+
+
+import java.sql.Date;
+
+import com.leprechauns.main.Entity.DTO.OrderDTO;
 
 import jakarta.persistence.*;
 
@@ -12,15 +16,15 @@ public class Order {
     private Integer orderCode;
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_pedido", nullable = false)
-    private LocalDate orderDate;
+    private Date orderDate;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_esperada", nullable = false)
-    private LocalDate expectedDate;
+    private Date expectedDate;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_entrega")
-    private LocalDate deliverDate;
+    private Date deliverDate;
 
     @Column(name = "estado", nullable = false)
     private String status;
@@ -40,27 +44,27 @@ public class Order {
         this.orderCode = orderCode;
     }
 
-    public LocalDate getOrderDate() {
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(LocalDate orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
 
-    public LocalDate getExpectedDate() {
+    public Date getExpectedDate() {
         return expectedDate;
     }
 
-    public void setExpectedDate(LocalDate expectedDate) {
+    public void setExpectedDate(Date expectedDate) {
         this.expectedDate = expectedDate;
     }
 
-    public LocalDate getDeliverDate() {
+    public Date getDeliverDate() {
         return deliverDate;
     }
 
-    public void setDeliverDate(LocalDate deliverDate) {
+    public void setDeliverDate(Date deliverDate) {
         this.deliverDate = deliverDate;
     }
 
@@ -86,6 +90,20 @@ public class Order {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    /* DTO */
+
+    public OrderDTO toDTO() {
+        OrderDTO dto = new OrderDTO();
+        dto.setOrderCode(this.orderCode);
+        dto.setOrderDate(this.orderDate);
+        dto.setExpectedDate(this.expectedDate);
+        dto.setDeliverDate(this.deliverDate != null ? this.deliverDate : null);
+        dto.setStatus(this.status);
+        dto.setComments(this.comments != null ? this.comments : null);
+        dto.setCustomerId(this.getCustomer().getCustomerId());
+        return dto;
     }
 
     @Override

@@ -2,6 +2,8 @@ package com.leprechauns.main.Entity;
 
 import java.util.List;
 
+import com.leprechauns.main.Entity.DTO.ProductRangeDTO;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -61,6 +63,17 @@ public class ProductRange {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    /* DTO */
+
+    ProductRangeDTO toDTO() {
+        ProductRangeDTO dto = new ProductRangeDTO();
+        dto.setRange(this.range);
+        dto.setTextDescription(this.textDescription != null ? this.textDescription : null);
+        dto.setHtmlDescription(this.htmlDescription != null ? this.htmlDescription : null);
+        dto.setImage(this.image != null ? this.image : null);
+        return dto;
     }
 
     @Override

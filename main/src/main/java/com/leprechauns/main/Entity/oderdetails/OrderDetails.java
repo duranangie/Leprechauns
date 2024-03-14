@@ -2,6 +2,7 @@ package com.leprechauns.main.Entity.oderdetails;
 
 import com.leprechauns.main.Entity.Order;
 import com.leprechauns.main.Entity.Product;
+import com.leprechauns.main.Entity.DTO.OrderDetailsDTO;
 
 import jakarta.persistence.*;
 
@@ -78,6 +79,20 @@ public class OrderDetails {
     public void setNumberLine(int numberLine) {
         this.numberLine = numberLine;
     }
+
+    /*DTO */
+    public OrderDetailsDTO toDTO(){
+        OrderDetailsDTO dto = new OrderDetailsDTO();
+        dto.setOrderCode(this.getOrder().getOrderCode());
+        dto.setProductCode(this.getProduct().getProductId());
+        dto.setAmount(this.amount);
+        dto.setUnitPrice(this.unitPrice);
+        dto.setNumberLine(this.numberLine);
+    
+        return dto;
+    }
+
+
 
     @Override
     public String toString() {

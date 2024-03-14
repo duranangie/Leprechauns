@@ -1,5 +1,7 @@
 package com.leprechauns.main.Entity;
 
+import com.leprechauns.main.Entity.DTO.ProductDTO;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -104,6 +106,23 @@ public class Product {
 
     public void setSupplierPrice(double supplierPrice) {
         this.supplierPrice = supplierPrice;
+    }
+
+    /* DTO */
+
+    public ProductDTO toDTO() {
+        ProductDTO dto = new ProductDTO();
+        dto.setProductId(this.productId);
+        dto.setName(this.name);
+        dto.setRangeProduct(this.getRangeProduct().getRange());
+        dto.setDimensions(this.dimensions);
+        dto.setSupplier(this.supplier);
+        dto.setDescription(this.description);
+        dto.setAmountInStock(this.amountInStock);
+        dto.setSalePrice(this.salePrice);
+        dto.setSupplierPrice(this.supplierPrice);
+
+        return dto;
     }
 
     @Override
