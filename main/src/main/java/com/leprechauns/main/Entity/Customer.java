@@ -1,62 +1,58 @@
 package com.leprechauns.main.Entity;
 
 import jakarta.persistence.*;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
+import com.leprechauns.main.DTO.CustomerDTO;
 
 @Entity
-@Table(name="cliente")
+@Table(name = "cliente")
 public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="codigo_cliente")
-    private Long customerId;
+    @Column(name = "codigo_cliente")
+    private Integer customerId;
 
-    @Column(name="nombre_cliente")
+    @Column(name = "nombre_cliente", nullable = false)
     private String customerName;
-    @Column(name="nombre_contacto")
+    @Column(name = "nombre_contacto")
     private String contactName;
-    @Column(name="apellido_contacto")
+    @Column(name = "apellido_contacto")
     private String contactLastName;
-    @Column(name="telefono")
+    @Column(name = "telefono", nullable = false)
     private String phoneNumber;
-    @Column(name="fax")
+    @Column(name = "fax", nullable = false)
     private String fax;
-    @Column(name="linea_direccion1")
+    @Column(name = "linea_direccion1", nullable = false)
     private String lineAddress1;
-    @Column(name="linea_direccion2")
+    @Column(name = "linea_direccion2")
     private String lineAddress2;
-    @Column(name="ciudad")
+    @Column(name = "ciudad", nullable = false)
     private String city;
-    @Column(name="region")
+    @Column(name = "region")
     private String region;
-    @Column(name="pais")
+    @Column(name = "pais")
     private String country;
-    @Column(name="codigo_postal")
+    @Column(name = "codigo_postal")
     private String postalCode;
-    @Column(name="limite_credito")
+    @Column(name = "limite_credito")
     private Double creditLimit;
-    // RELATION MANY TO ONE WITH THE TABLE "empleado"
 
-    @Column(name="codigo_empleado_rep_ventas")
-    @ManyToOne
-    @JoinColumn(name = "empleado")
-    private Long salesRepresentativeCode;
-// RELATION ONE TO MANY WITH THE TABLE "pago"
-    @OneToMany (mappedBy = "cliente", cascade =CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Payment> payments = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "codigo_empleado_rep_ventas")
+    private Employee sales;
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Payment> payments;
 
-    public Customer() {
-    }
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Order> orders;
 
-    public Long getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Long customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 
@@ -156,12 +152,12 @@ public class Customer {
         this.creditLimit = creditLimit;
     }
 
-    public Long getSalesRepresentativeCode() {
-        return salesRepresentativeCode;
+    public Employee getSales() {
+        return sales;
     }
 
-    public void setSalesRepresentativeCode(Long salesRepresentativeCode) {
-        this.salesRepresentativeCode = salesRepresentativeCode;
+    public void setSales(Employee sales) {
+        this.sales = sales;
     }
 
     public List<Payment> getPayments() {
@@ -172,36 +168,42 @@ public class Customer {
         this.payments = payments;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Customer customer)) return false;
-        return Objects.equals(getCustomerId(), customer.getCustomerId()) && Objects.equals(getCustomerName(), customer.getCustomerName()) && Objects.equals(getContactName(), customer.getContactName()) && Objects.equals(getContactLastName(), customer.getContactLastName()) && Objects.equals(getPhoneNumber(), customer.getPhoneNumber()) && Objects.equals(getFax(), customer.getFax()) && Objects.equals(getLineAddress1(), customer.getLineAddress1()) && Objects.equals(getLineAddress2(), customer.getLineAddress2()) && Objects.equals(getCity(), customer.getCity()) && Objects.equals(getRegion(), customer.getRegion()) && Objects.equals(getCountry(), customer.getCountry()) && Objects.equals(getPostalCode(), customer.getPostalCode()) && Objects.equals(getCreditLimit(), customer.getCreditLimit()) && Objects.equals(getSalesRepresentativeCode(), customer.getSalesRepresentativeCode()) && Objects.equals(getPayments(), customer.getPayments());
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getCustomerId(), getCustomerName(), getContactName(), getContactLastName(), getPhoneNumber(), getFax(), getLineAddress1(), getLineAddress2(), getCity(), getRegion(), getCountry(), getPostalCode(), getCreditLimit(), getSalesRepresentativeCode(), getPayments());
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
+
+    /* DTO */
+
+       public CustomerDTO toDTO() {
+        CustomerDTO dto = new CustomerDTO();
+        dto.setCustomerId(this.customerId);
+        dto.setCustomerName(this.customerName);
+        dto.setContactName(this.contactName);
+        dto.setContactLastName(this.contactLastName);
+        dto.setPhoneNumber(this.phoneNumber);
+        dto.setFax(this.fax);
+        dto.setLineAddress1(this.lineAddress1);
+        dto.setLineAddress2(this.lineAddress2);
+        dto.setCity(this.city);
+        dto.setRegion(this.region);
+        dto.setCountry(this.country);
+        dto.setPostalCode(this.postalCode);
+        dto.setCreditLimit(this.creditLimit);
+        dto.setSales(this.sales != null ? this.sales.getEmployeeId() : null);
+        return dto;
+       }
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "customerId=" + customerId +
-                ", customerName='" + customerName + '\'' +
-                ", contactName='" + contactName + '\'' +
-                ", contactLastName='" + contactLastName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", fax='" + fax + '\'' +
-                ", lineAddress1='" + lineAddress1 + '\'' +
-                ", lineAddress2='" + lineAddress2 + '\'' +
-                ", city='" + city + '\'' +
-                ", region='" + region + '\'' +
-                ", country='" + country + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", creditLimit=" + creditLimit +
-                ", salesRepresentativeCode=" + salesRepresentativeCode +
-                ", payments=" + payments +
-                '}';
+        return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", contactName=" + contactName
+                + ", contactLastName=" + contactLastName + ", phoneNumber=" + phoneNumber + ", fax=" + fax
+                + ", lineAddress1=" + lineAddress1 + ", lineAddress2=" + lineAddress2 + ", city=" + city + ", region="
+                + region + ", country=" + country + ", postalCode=" + postalCode + ", creditLimit=" + creditLimit
+                + ", sales=" + sales + "]";
     }
+
 }
