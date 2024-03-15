@@ -43,4 +43,20 @@ public class OfficeController {
         return ResponseEntity.ok(officesInSpain);
     }
 
+    // @GetMapping("/office-address-Fuenlabra")
+    // public List<String> getOfficeAddress(){
+    //     return officeService.findOfficeAddress();
+    // }
+
+    // @GetMapping("/office-address-Fuenlabra")
+    // public ResponseEntity<List<OfficeDTO>> getOfficeAddress(){
+    //     List<OfficeDTO> officeAddressFuenlabra = officeService.findOfficeAddress();
+    //     return ResponseEntity.ok(officeAddressFuenlabra);
+    // }
+
+    @GetMapping("/office-employee-range-Frutales")
+    public ResponseEntity<List<OfficeDTO>> getOfficeEmployeeDontWorkEachProductFrutal(){
+        List<OfficeDTO> officeAddressFuenlabra = officeService.findOfficeDontWorkEmployeeRangeFrutales();
+        return ResponseEntity.ok(officeAddressFuenlabra);
+    }
 }

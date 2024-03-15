@@ -83,12 +83,20 @@ public class OfficeService {
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
     }
     
-    public List<OfficeDTO> findOfficeAddress(){
-        List<Object[]> objectList = officeRepository.findOfficeAddress();
-        Map<String, Integer> propertyIndices = Map.of("officeCode", 0, "city", 1);
+    // public List<String> findOfficeAddress(){
+    //     return officeRepository.findOfficeAddress();
+    // }
+
+    // public List<OfficeDTO> findOfficeAddress(){
+    //     List<Object[]> objectList = officeRepository.findOfficeAddress();
+    //     Map<String, Integer> propertyIndices = Map.of("address1", 0, "address2", 1);
+    //     return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
+    // }
+
+    public List<OfficeDTO> findOfficeDontWorkEmployeeRangeFrutales(){
+        List<Object[]> objectList = officeRepository.findOfficeEmployeeDontWorkEachProductFrutal();
+        Map<String, Integer> propertyIndices = Map.of("officeCode", 0);
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
     }
-
-    
     
 }
