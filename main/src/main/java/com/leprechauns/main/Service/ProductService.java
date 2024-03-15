@@ -20,4 +20,22 @@ public class ProductService {
                 .map(Product::toDTO)
                 .toList();
     }
+
+
+    public List<String> findProductStock() {
+        return productRepository.findProductStock();
+    }
+
+
+    public List<String> findNameProduct() {
+        return productRepository.findNameProduct();
+    }
+
+    public List<String> findDescriptionProduct() {
+        return productRepository.findDescriptionProduct();
+    }
+
+    public List<Double[]> findPrice() {
+        return productRepository.findPrice();
+    }
 }
