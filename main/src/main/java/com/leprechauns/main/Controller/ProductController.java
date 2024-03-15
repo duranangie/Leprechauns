@@ -26,4 +26,32 @@ public class ProductController {
     public List<ProductDTO> getAllProducts(){
         return productService.getAllProducts();
     }
+
+    @GetMapping("/productstock")
+    public List<String> findProductStock() {
+        return productService.findProductStock();
+    }
+
+
+
+    @GetMapping("/productsName")
+    public List<String> findNameProduct() {
+        return productService.findNameProduct();
+    }
+
+
+    @GetMapping("/productsdescription")
+    public List<String> findDescriptionProduct() {
+        return productService.findDescriptionProduct();
+    }
+
+    @GetMapping("/priceproduct")
+    public List<Double[]> findPrice() {
+        return productService.findPrice();
+    }
+
+
+
+    
+
 }

@@ -1,6 +1,7 @@
 package com.leprechauns.main.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,31 @@ public class OrderService {
         return orderRepository.findAll().stream()
                 .map(Order::toDTO)
                 .toList();
+    }
+
+
+    public List<String> getOrderStatus() {
+        return orderRepository.getOrderStatus();
+    }
+
+    public List<Object[]> findOrdersWithExpectedDateBeforeDeliverDate() {
+        return orderRepository.findOrdersWithExpectedDateBeforeDeliverDate();
+    }
+
+    public List<Object[]> findDay() {
+        return orderRepository.findDay();
+    }
+
+    public List<Order> findOrders() {
+        return orderRepository.findOrders();
+    }
+
+    public List<Order> findOrdersInJanuary() {
+        return orderRepository.findOrdersInJanuary();
+    }
+
+
+    public List<Object[]> countByEstado(){
+        return orderRepository.countByEstado();
     }
 }

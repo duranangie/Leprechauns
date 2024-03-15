@@ -28,5 +28,35 @@ public class CustomerController {
         return customerService.getAllCustomers();
     }
 
+    @GetMapping("/customersCountry")
+    public List<CustomerDTO> findByCountryLikeIgnoreCase() {
+        return customerService.findByCountryLikeIgnoreCase();
+    }
+
+    @GetMapping("/clientspay2008")
+    public List<Integer> findCustomerPayIn2008() {
+        return customerService.findCustomerPayIn2008();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    // @GetMapping("/clientsInMadrid")
+    // public List<CustomerDTO> findCustomersMadrid() {
+    //     return customerService.findCustomersMadrid();
+    // };
+
     
 }
