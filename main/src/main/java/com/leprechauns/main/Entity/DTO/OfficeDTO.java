@@ -1,5 +1,8 @@
 package com.leprechauns.main.Entity.DTO;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OfficeDTO {
     private String officeCode;
     private String city;
@@ -9,6 +12,11 @@ public class OfficeDTO {
     private String phone;
     private String addressLine1;
     private String addressLine2;
+    
+    
+
+    public OfficeDTO() {
+    }
 
     public String getOfficeCode() {
         return officeCode;
