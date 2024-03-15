@@ -83,11 +83,11 @@ public class OfficeService {
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
     }
     
-    public List<OfficeDTO> findOfficeAddress(){
-        List<Object[]> objectList = officeRepository.findOfficeAddress();
-        Map<String, Integer> propertyIndices = Map.of("officeCode", 0, "city", 1);
-        return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
-    }
+    // public List<OfficeDTO> findOfficeAddress(){
+    //     List<Object[]> objectList = officeRepository.findOfficeAddress();
+    //     Map<String, Integer> propertyIndices = Map.of("officeCode", 0, "city", 1);
+    //     return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
+    // }
 
     
     

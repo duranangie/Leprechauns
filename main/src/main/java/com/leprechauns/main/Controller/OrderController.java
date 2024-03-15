@@ -38,9 +38,10 @@ public class OrderController {
 
 
     @GetMapping("/deliver")
-    public List<Object[]> getOrdersWithExpectedDateBeforeDeliverDate() {
-        return orderService.findOrdersWithExpectedDateBeforeDeliverDate();
+    public List<Object> findOrdersByExpectedDeliveryBeforeActual() {
+        return orderService.findOrdersByExpectedDeliveryBeforeActual(); 
     }
+    
 
 
     @GetMapping("/deliverbefore")
@@ -50,13 +51,13 @@ public class OrderController {
 
 
     @GetMapping("/rejected")
-    public List<Order> findOrders() {
+    public List<Object[]> findOrders() {
         return orderService.findOrders();
     }
 
 
     @GetMapping("/january-delivered")
-    public List<Order> getJanuaryDeliveredOrders() {
+    public List<Object> getJanuaryDeliveredOrders() {
         return orderService.findOrdersInJanuary();
     }
 
