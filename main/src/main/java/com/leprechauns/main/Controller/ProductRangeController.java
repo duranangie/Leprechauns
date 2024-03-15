@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.leprechauns.main.Entity.ProductRange;
 import com.leprechauns.main.Entity.DTO.ProductRangeDTO;
-// import com.leprechauns.main.Entity.DTO.ProductRangeDTO;
 import com.leprechauns.main.Service.ProductRangeService;
 
 @RestController
