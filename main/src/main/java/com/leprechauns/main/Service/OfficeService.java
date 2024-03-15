@@ -1,6 +1,5 @@
 package com.leprechauns.main.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import com.leprechauns.main.Entity.Office;
@@ -83,6 +82,7 @@ public class OfficeService {
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
     }
     
+<<<<<<< HEAD
     // public List<OfficeDTO> findOfficeAddress(){
     //     List<Object[]> objectList = officeRepository.findOfficeAddress();
     //     Map<String, Integer> propertyIndices = Map.of("officeCode", 0, "city", 1);
@@ -90,5 +90,22 @@ public class OfficeService {
     // }
 
     
+=======
+    // public List<String> findOfficeAddress(){
+    //     return officeRepository.findOfficeAddress();
+    // }
+
+    // public List<OfficeDTO> findOfficeAddress(){
+    //     List<Object[]> objectList = officeRepository.findOfficeAddress();
+    //     Map<String, Integer> propertyIndices = Map.of("address1", 0, "address2", 1);
+    //     return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
+    // }
+
+    public List<OfficeDTO> findOfficeDontWorkEmployeeRangeFrutales(){
+        List<Object[]> objectList = officeRepository.findOfficeEmployeeDontWorkEachProductFrutal();
+        Map<String, Integer> propertyIndices = Map.of("officeCode", 0);
+        return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
+    }
+>>>>>>> 095b01a05ad4dd24c4e8f90788329bf2dc4504fd
     
 }

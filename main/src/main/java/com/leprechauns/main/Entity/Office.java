@@ -9,30 +9,30 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "oficina")
 public class Office {
-    @Id
-    @Column(name = "codigo_oficina", nullable = false)
-    private String officeCode;
+        @Id
+        @Column(name = "codigo_oficina", nullable = false)
+        private String officeCode;
 
-    @Column(name = "ciudad", nullable = false)
-    private String city;
+        @Column(name = "ciudad", nullable = false)
+        private String city;
 
-    @Column(name = "pais", nullable = false)
-    private String country;
+        @Column(name = "pais", nullable = false)
+        private String country;
 
-    @Column(name = "region")
-    private String region;
+        @Column(name = "region")
+        private String region;
 
-    @Column(name = "codigo_postal", nullable = false)
-    private String postalCode;
+        @Column(name = "codigo_postal", nullable = false)
+        private String postalCode;
 
-    @Column(name = "telefono", nullable = false)
-    private String phone;
+        @Column(name = "telefono", nullable = false)
+        private String phone;
 
-    @Column(name = "linea_direccion1", nullable = false)
-    private String address1;
+        @Column(name = "linea_direccion1", nullable = false)
+        private String address1;
 
-    @Column(name = "linea_direccion2")
-    private String address2;
+        @Column(name = "linea_direccion2")
+        private String address2;
 
     @OneToMany(mappedBy = "office", cascade = CascadeType.ALL)
     private List<Employee> employees;

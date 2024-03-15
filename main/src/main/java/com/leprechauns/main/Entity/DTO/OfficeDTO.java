@@ -12,8 +12,6 @@ public class OfficeDTO {
     private String phone;
     private String addressLine1;
     private String addressLine2;
-    
-    
 
     public OfficeDTO() {
     }
