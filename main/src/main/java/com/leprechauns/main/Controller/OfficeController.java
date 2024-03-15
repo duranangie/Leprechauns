@@ -1,8 +1,11 @@
 package com.leprechauns.main.Controller;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,5 +31,16 @@ public class OfficeController {
         return officeService.getAllOffices();
     }
     
+    @GetMapping("/office-code-and-city")
+    public ResponseEntity<List<OfficeDTO>> getOfficesByCityAndPhone() {
+        List<OfficeDTO> officeCodeAndCity = officeService.findOfficeCodeAndCity();
+        return ResponseEntity.ok(officeCodeAndCity);
+    }
+
+    @GetMapping("/office-spain")
+    public ResponseEntity<List<OfficeDTO>> getOfficesInSpain() {
+        List<OfficeDTO> officesInSpain = officeService.findOfficesSpain();
+        return ResponseEntity.ok(officesInSpain);
+    }
 
 }
