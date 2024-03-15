@@ -1,6 +1,5 @@
 package com.leprechauns.main.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import com.leprechauns.main.Entity.Office;
