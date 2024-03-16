@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.leprechauns.main.Entity.Order;
 import com.leprechauns.main.Entity.DTO.OrderDTO;
-import com.leprechauns.main.Entity.DTO.OrderDetailsDTO;
 import com.leprechauns.main.Service.OrderService;
 
 @RestController
@@ -41,20 +39,16 @@ public class OrderController {
     public List<Object> findOrdersByExpectedDeliveryBeforeActual() {
         return orderService.findOrdersByExpectedDeliveryBeforeActual(); 
     }
-    
-
 
     @GetMapping("/deliverbefore")
     public List<Object[]> findDay() {
         return orderService.findDay();
     }
 
-
     @GetMapping("/rejected")
     public List<Object[]> findOrders() {
         return orderService.findOrders();
     }
-
 
     @GetMapping("/january-delivered")
     public List<Object> getJanuaryDeliveredOrders() {
@@ -65,8 +59,4 @@ public class OrderController {
     public List<Object[]> countByEstado() {
         return orderService.countByEstado();
     }
-
-
-
-
 }
