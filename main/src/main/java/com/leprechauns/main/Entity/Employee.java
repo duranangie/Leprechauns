@@ -4,15 +4,18 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.leprechauns.main.Entity.DTO.EmployeeDTO;
 
 @Entity
 @Table(name = "empleado")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "employeeId")
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "codigo_empleado")
     private Integer employeeId;
     @Column(name = "nombre", nullable = false)
@@ -28,14 +31,17 @@ public class Employee {
     @Column(name = "puesto")
     private String rol;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "codigo_oficina")
     private Office office;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "codigo_jefe")
     private Employee bossCode;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "sales", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Customer> customers;
 
@@ -141,5 +147,4 @@ public class Employee {
                 + ", lastName2=" + lastName2 + ", extension=" + extension + ", email=" + email + ", rol=" + rol
                 + ", office=" + office + ", bossCode=" + bossCode + "]";
     }
-
 }

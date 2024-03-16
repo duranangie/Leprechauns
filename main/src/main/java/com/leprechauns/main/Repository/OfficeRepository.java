@@ -17,19 +17,11 @@ public interface OfficeRepository extends JpaRepository<Office, String> {
     @Query("SELECT o.phone, o.city FROM Office o WHERE o.country='España'")
     List<Object[]> findOfficeSpain();
 
-<<<<<<< HEAD
-    // @Query("SELECT CONCAT(o.addressLine1, ' ', o.addressLine2) AS office_address" 
-    //         + "FROM Office o JOIN employee e ON o.officeCode = e.codigo_oficina" 
-    //         + "JOIN customer c ON e.codigo_empleado = c.codigo_empleado_rep_ventas"
-    //         + "WHERE c.ciudad = 'Fuenlabrada'")
-    // List<Object[]> findOfficeAddress();
-=======
-    // @Query("SELECT CONCAT(o.address1, ' ', o.address2) AS office_address " 
-    //     + "FROM Office o JOIN Employee e ON o.officeCode = e.office.officeCode " 
-    //     + "JOIN Customer c ON c.sales.employeeId = e.employeeId "
-    //     + "WHERE c.city = 'Fuenlabrada'")
-    // List<Object[]> findOfficeAddress(); 
->>>>>>> 095b01a05ad4dd24c4e8f90788329bf2dc4504fd
+    @Query("SELECT CONCAT(o.address1, o.address2) AS office_address " 
+        + "FROM Office o JOIN Employee e ON o.officeCode = e.office.officeCode " 
+        + "JOIN Customer c ON c.sales.employeeId = e.employeeId "
+        + "WHERE c.city = 'Fuenlabrada'")
+    List<Object[]> findOfficeAddress(); 
 
     @Query("SELECT DISTINCT o.officeCode "
             + "FROM Office o "

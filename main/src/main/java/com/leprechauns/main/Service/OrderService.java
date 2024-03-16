@@ -1,7 +1,6 @@
 package com.leprechauns.main.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,12 +20,10 @@ public class OrderService {
     }
 
     public List<OrderDTO> getAllOrders(){
-
         return orderRepository.findAll().stream()
                 .map(Order::toDTO)
                 .toList();
     }
-
 
     public List<String> getOrderStatus() {
         return orderRepository.getOrderStatus();
@@ -36,7 +33,6 @@ public class OrderService {
         return orderRepository.findOrdersByExpectedDeliveryBeforeActual();
     }
     
-
     public List<Object[]> findDay() {
         return orderRepository.findDay();
     }
@@ -48,7 +44,6 @@ public class OrderService {
     public List<Object> findOrdersInJanuary() {
         return orderRepository.findOrdersInJanuary();
     }
-
 
     public List<Object[]> countByEstado(){
         return orderRepository.countByEstado();

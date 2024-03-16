@@ -1,14 +1,19 @@
 package com.leprechauns.main.Entity.DTO;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDetailsDTO {
     private Integer orderCode;
     private String productCode;
     private Integer amount;
-    private double unitPrice;
+    private Double unitPrice;
     private Integer numberLine;
 
 
-    
+    public OrderDetailsDTO() {
+    }
+
     public Integer getOrderCode() {
         return orderCode;
     }
@@ -33,11 +38,11 @@ public class OrderDetailsDTO {
         this.amount = amount;
     }
 
-    public double getUnitPrice() {
+    public Double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(double unitPrice) {
+    public void setUnitPrice(Double unitPrice) {
         this.unitPrice = unitPrice;
     }
 

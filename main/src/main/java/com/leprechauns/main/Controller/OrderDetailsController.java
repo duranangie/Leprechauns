@@ -1,6 +1,7 @@
 package com.leprechauns.main.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,14 +19,48 @@ public class OrderDetailsController {
 
     public final OrderDetailsService orderDetailsService;
 
-     @Autowired
+    @Autowired
     public OrderDetailsController(OrderDetailsService orderDetailService) {
         this.orderDetailsService = orderDetailService;
     }
+    
     @GetMapping
     public List<OrderDetailsDTO> getAllOrderDetails(){
         return orderDetailsService.getAllOrderDetails();
     }
-
     
+    @GetMapping("/different-products")
+    public List<Map<String, Object>> getNumberProduct() {
+        return orderDetailsService.findNumberProduct();
+    }
+
+    @GetMapping("/total-products-each-order")
+    public List<Map<String, Object>> getTotalProductEachProduct() {
+        return orderDetailsService.findTotalProductEachProduct();
+    }
+
+    @GetMapping("/20-products-total-unit")
+    public List<Map<String, Object>> get20ProductTotalUnits() {
+        return orderDetailsService.find20ProductTotalUnits();
+    }
+
+    @GetMapping("/tax-vat-total-charged")
+    public List<Map<String, Object>> getVATAndInvoice() {
+        return orderDetailsService.findVATAndInvoice();
+    }
+
+    @GetMapping("/tax-vat-total-charged-productcode")
+    public List<Map<String, Object>> getVATAndInvoiceGroupByProductCode() {
+        return orderDetailsService.findVATAndInvoiceGroupByProductCode();
+    }
+
+    @GetMapping("/tax-vat-total-charged-productcode-or")
+    public List<Map<String, Object>> getVATAndInvoiceGroupByProductCodeAndOr() {
+        return orderDetailsService.findVATAndInvoiceGroupByProductCodeAndOr();
+    }
+
+    @GetMapping("/product-more-3000")
+    public List<Map<String, Object>> getInvoiceMore3000() {
+        return orderDetailsService.findInvoiceMore3000();
+    }
 }
