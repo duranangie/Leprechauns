@@ -2,6 +2,7 @@ package com.leprechauns.main.Entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.leprechauns.main.Entity.DTO.OfficeDTO;
 
 import jakarta.persistence.*;
@@ -9,31 +10,33 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "oficina")
 public class Office {
-        @Id
-        @Column(name = "codigo_oficina", nullable = false)
-        private String officeCode;
 
-        @Column(name = "ciudad", nullable = false)
-        private String city;
+    @Id
+    @Column(name = "codigo_oficina", nullable = false)
+    private String officeCode;
 
-        @Column(name = "pais", nullable = false)
-        private String country;
+    @Column(name = "ciudad", nullable = false)
+    private String city;
 
-        @Column(name = "region")
-        private String region;
+    @Column(name = "pais", nullable = false)
+    private String country;
 
-        @Column(name = "codigo_postal", nullable = false)
-        private String postalCode;
+    @Column(name = "region")
+    private String region;
 
-        @Column(name = "telefono", nullable = false)
-        private String phone;
+    @Column(name = "codigo_postal", nullable = false)
+    private String postalCode;
 
-        @Column(name = "linea_direccion1", nullable = false)
-        private String address1;
+    @Column(name = "telefono", nullable = false)
+    private String phone;
 
-        @Column(name = "linea_direccion2")
-        private String address2;
+    @Column(name = "linea_direccion1", nullable = false)
+    private String address1;
 
+    @Column(name = "linea_direccion2")
+    private String address2;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "office", cascade = CascadeType.ALL)
     private List<Employee> employees;
 
@@ -129,5 +132,4 @@ public class Office {
                 + ", postalCode=" + postalCode + ", phone=" + phone + ", address1=" + address1 + ", address2="
                 + address2 + "]";
     }
-
 }

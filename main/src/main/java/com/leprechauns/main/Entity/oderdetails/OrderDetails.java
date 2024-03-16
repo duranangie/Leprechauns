@@ -88,7 +88,6 @@ public class OrderDetails {
         dto.setAmount(this.amount);
         dto.setUnitPrice(this.unitPrice);
         dto.setNumberLine(this.numberLine);
-    
         return dto;
     }
 
