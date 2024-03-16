@@ -1,10 +1,11 @@
 package com.leprechauns.main.Entity;
 
-
-
 import java.sql.Date;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.leprechauns.main.Entity.DTO.OrderDTO;
+import com.leprechauns.main.Entity.oderdetails.OrderDetails;
 
 import jakarta.persistence.*;
 
@@ -36,6 +37,10 @@ public class Order {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "codigo_cliente", nullable = false)
     private Customer customer;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+    private List<OrderDetails> order;
 
     public Integer getOrderCode() {
         return orderCode;

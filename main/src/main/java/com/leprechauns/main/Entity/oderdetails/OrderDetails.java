@@ -12,14 +12,15 @@ public class OrderDetails {
 
     @EmbeddedId
     private OrderDetailId id;
-
-    @ManyToOne
+    
     @MapsId("orderCode")
+    @ManyToOne(fetch = FetchType.EAGER)
+
     @JoinColumn(name = "codigo_pedido")
     private Order order;
-
-    @ManyToOne
+    
     @MapsId("productCode")
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "codigo_producto")
     private Product product;
 

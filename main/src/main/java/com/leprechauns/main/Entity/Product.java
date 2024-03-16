@@ -1,6 +1,10 @@
 package com.leprechauns.main.Entity;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.leprechauns.main.Entity.DTO.ProductDTO;
+import com.leprechauns.main.Entity.oderdetails.OrderDetails;
 
 import jakarta.persistence.*;
 
@@ -35,7 +39,11 @@ public class Product {
 
     @Column(name = "precio_proveedor")
     private double supplierPrice;
-
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+    private List<OrderDetails> product;
+    
     public String getProductId() {
         return productId;
     }
@@ -107,6 +115,8 @@ public class Product {
     public void setSupplierPrice(double supplierPrice) {
         this.supplierPrice = supplierPrice;
     }
+
+    
 
     /* DTO */
 
