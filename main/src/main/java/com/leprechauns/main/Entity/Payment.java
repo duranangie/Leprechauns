@@ -2,6 +2,7 @@ package com.leprechauns.main.Entity;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.leprechauns.main.Entity.DTO.PaymentDTO;
 
 import jakarta.persistence.*;
@@ -24,6 +25,7 @@ public class Payment {
     @Column(name = "fecha_pago", nullable = false)
     private Date payDay;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "codigo_cliente")
     private Customer customer;
