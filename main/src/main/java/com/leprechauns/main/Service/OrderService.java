@@ -32,19 +32,20 @@ public class OrderService {
         return orderRepository.getOrderStatus();
     }
 
-    public List<Object[]> findOrdersWithExpectedDateBeforeDeliverDate() {
-        return orderRepository.findOrdersWithExpectedDateBeforeDeliverDate();
+    public List<Object> findOrdersByExpectedDeliveryBeforeActual() {
+        return orderRepository.findOrdersByExpectedDeliveryBeforeActual();
     }
+    
 
     public List<Object[]> findDay() {
         return orderRepository.findDay();
     }
 
-    public List<Order> findOrders() {
+    public List<Object[]> findOrders() {
         return orderRepository.findOrders();
     }
 
-    public List<Order> findOrdersInJanuary() {
+    public List<Object> findOrdersInJanuary() {
         return orderRepository.findOrdersInJanuary();
     }
 

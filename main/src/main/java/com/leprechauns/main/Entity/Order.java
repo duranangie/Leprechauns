@@ -14,6 +14,7 @@ public class Order {
     @Id
     @Column(name = "codigo_pedido")
     private Integer orderCode;
+    
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_pedido", nullable = false)
     private Date orderDate;
