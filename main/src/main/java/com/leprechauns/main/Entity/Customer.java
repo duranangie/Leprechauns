@@ -39,15 +39,6 @@ public class Customer {
     @Column(name = "limite_credito")
     private Double creditLimit;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "codigo_empleado_rep_ventas")
-    private Employee sales;
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Payment> payments;
-
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Order> orders;
-
     public Integer getCustomerId() {
         return customerId;
     }
@@ -175,6 +166,17 @@ public class Customer {
     public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
+
+    // Relations
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "codigo_empleado_rep_ventas")
+    private Employee sales;
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Payment> payments;
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Order> orders;
 
     /* DTO */
 

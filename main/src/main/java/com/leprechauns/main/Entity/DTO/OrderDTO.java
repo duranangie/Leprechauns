@@ -3,6 +3,7 @@ package com.leprechauns.main.Entity.DTO;
 import java.sql.Date;
 
 public class OrderDTO {
+
     private Integer orderCode;
     private Date orderDate;
     private Date expectedDate;
@@ -66,5 +67,4 @@ public class OrderDTO {
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
-
 }

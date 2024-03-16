@@ -21,11 +21,9 @@ public class ProductService {
                 .toList();
     }
 
-
     public List<String> findProductStock() {
         return productRepository.findProductStock();
     }
-
 
     public List<String> findNameProduct() {
         return productRepository.findNameProduct();

@@ -3,6 +3,7 @@ package com.leprechauns.main.Entity.DTO;
 import java.sql.Date;
 
 public class PaymentDTO {
+
     private String transactionId;
     private String paymentForm;
     private Date payDay;
@@ -48,5 +49,4 @@ public class PaymentDTO {
     public void setCustomer(Integer customer) {
         this.customer = customer;
     }
-
 }

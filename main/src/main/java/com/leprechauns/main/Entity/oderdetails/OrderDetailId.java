@@ -7,6 +7,7 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class OrderDetailId implements Serializable {
+    
     @Column(name = "codigo_pedido")
     private Integer orderCode;
 

@@ -23,12 +23,7 @@ public class Payment {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_pago", nullable = false)
-    private Date payDay;
-
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "codigo_cliente")
-    private Customer customer;
+    private Date payDay; 
 
     public String getTransactionId() {
         return transactionId;
@@ -70,8 +65,13 @@ public class Payment {
         this.customer = customer;
     }
 
-    /* DTO */
+    // Relations
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "codigo_cliente")
+    private Customer customer;
 
+    /* DTO */
     public PaymentDTO toDTO() {
         PaymentDTO dto = new PaymentDTO();
         dto.setTransactionId(this.transactionId);
@@ -87,5 +87,4 @@ public class Payment {
         return "Payment [transactionId=" + transactionId + ", paymentForm=" + paymentForm + ", total=" + total
                 + ", payDay=" + payDay + ", customer=" + customer + "]";
     }
-
 }

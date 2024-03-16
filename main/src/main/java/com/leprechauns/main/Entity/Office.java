@@ -36,10 +36,6 @@ public class Office {
     @Column(name = "linea_direccion2")
     private String address2;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "office", cascade = CascadeType.ALL)
-    private List<Employee> employees;
-
     public String getOfficeCode() {
         return officeCode;
     }
@@ -112,6 +108,11 @@ public class Office {
         this.employees = employees;
     }
 
+    // Relations
+    @JsonIgnore
+    @OneToMany(mappedBy = "office", cascade = CascadeType.ALL)
+    private List<Employee> employees;
+    
     /* DTO */
 
       public OfficeDTO toDTO() {

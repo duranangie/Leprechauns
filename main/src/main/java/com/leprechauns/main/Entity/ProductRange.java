@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "gama_producto")
 public class ProductRange {
+
     @Id
     @Column(name = "gama", nullable = false)
     private String range;
@@ -21,9 +22,6 @@ public class ProductRange {
 
     @Column(name = "imagen")
     private String image;
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "rangeProduct", cascade = CascadeType.ALL)
-    private List<Product> products;
 
     public String getRange() {
         return range;
@@ -65,8 +63,11 @@ public class ProductRange {
         this.products = products;
     }
 
-    /* DTO */
+    // Relations
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "rangeProduct", cascade = CascadeType.ALL)
+    private List<Product> products;
 
+    /* DTO */
     public ProductRangeDTO toDTO() {
         ProductRangeDTO dto = new ProductRangeDTO();
         dto.setRange(this.range);
@@ -81,5 +82,4 @@ public class ProductRange {
         return "rangeProduct [range=" + range + ", textDescription=" + textDescription + ", htmlDescription="
                 + htmlDescription + ", image=" + image + "]";
     }
-
 }

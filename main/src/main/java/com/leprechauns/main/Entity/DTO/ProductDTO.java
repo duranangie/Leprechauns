@@ -1,6 +1,7 @@
 package com.leprechauns.main.Entity.DTO;
 
 public class ProductDTO {
+
     private String productId;
     private String name;
     private String rangeProduct;
@@ -82,5 +83,4 @@ public class ProductDTO {
     public void setSupplierPrice(double supplierPrice) {
         this.supplierPrice = supplierPrice;
     }
-
 }

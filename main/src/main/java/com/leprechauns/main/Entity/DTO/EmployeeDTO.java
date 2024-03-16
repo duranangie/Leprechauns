@@ -1,6 +1,7 @@
 package com.leprechauns.main.Entity.DTO;
 
 public class EmployeeDTO {
+
     private Integer employeeId;
     private String employeeName;
     private String lastName1;
@@ -82,5 +83,4 @@ public class EmployeeDTO {
     public void setBossCode(Integer bossCode) {
         this.bossCode = bossCode;
     }
-
 }

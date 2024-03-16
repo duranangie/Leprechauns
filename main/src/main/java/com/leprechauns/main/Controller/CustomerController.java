@@ -35,20 +35,15 @@ public class CustomerController {
         return customerService.findByCountryLikeIgnoreCase();
     }
 
-    // @GetMapping("/clientspay2008")
-    // public List<Integer> findCustomerPayIn2008() {
-    // return customerService.findCustomerPayIn2008();
-    // }
-
     @GetMapping("/clientsInMadrid")
     public List<CustomerDTO> findCustomersMadrid() {
         return customerService.findCustomersMadrid();
-    };
+    }
 
     @GetMapping("/customerspain")
     public List<CustomerDTO> findNameSpain() {
         return customerService.findNameSpain();
-    };
+    }
 
     @GetMapping("/sales-info")
     public List<Object[]> clientsSalesRepresentatives() {
@@ -75,18 +70,15 @@ public class CustomerController {
         return customerService.clientsWithLateDeliveries();
     }
 
-
     @GetMapping("/list-gamas")
     public List<Map<Object, Object>> listProductRangesByCustomer(){
         return customerService.listProductRangesByCustomer();
     }
 
-
     @GetMapping("/clientswithoutpayments")
     public List<CustomerDTO> clientsWithoutPayments() {
         return customerService.clientsWithoutPayments();
     }
-
 
     @GetMapping("/clients-without-orders")
     public List<CustomerDTO> clientsWithoutOrders() {
@@ -98,7 +90,6 @@ public class CustomerController {
         return customerService.clientsWithoutPaymentsAndOrders();
     }
 
-
     @GetMapping("/clients-with-orders-but-no-payments")
     public List<CustomerDTO> clientsWithOrdersButNoPayments() {
         return customerService.clientsWithOrdersButNoPayments();
@@ -109,12 +100,10 @@ public class CustomerController {
         return customerService.clientsCountByCountry();
     }
 
-
-      @GetMapping("/clients-count-city/{city}")
+    @GetMapping("/clients-count-city/{city}")
     public int clientsCountInCity(@PathVariable String city) {
         return customerService.clientsCountInCity(city);
     }
-
 
     @GetMapping("/clients-count-in-cities-starting-with-M")
     public List<Map<Object, Object>> clientsCountInCitiesStartingWithM() {
@@ -126,10 +115,8 @@ public class CustomerController {
         return customerService.clientsWithoutSales();
     }
 
-
     @GetMapping("/first-last-payment-date-by-client")
     public List<Map<Object, Object>> firstLastPaymentDateByClient() {
         return customerService.firstLastPaymentDateByClient();
     }
-
 }

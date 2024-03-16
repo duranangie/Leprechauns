@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OfficeDTO {
+    
     private String officeCode;
     private String city;
     private String country;

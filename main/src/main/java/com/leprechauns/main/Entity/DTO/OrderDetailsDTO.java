@@ -4,12 +4,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDetailsDTO {
+
     private Integer orderCode;
     private String productCode;
     private Integer amount;
     private Double unitPrice;
     private Integer numberLine;
-
 
     public OrderDetailsDTO() {
     }
@@ -53,5 +53,4 @@ public class OrderDetailsDTO {
     public void setNumberLine(Integer numberLine) {
         this.numberLine = numberLine;
     }
-
 }

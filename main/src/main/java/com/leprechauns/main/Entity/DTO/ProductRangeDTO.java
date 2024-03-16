@@ -1,6 +1,7 @@
 package com.leprechauns.main.Entity.DTO;
 
 public class ProductRangeDTO {
+
     private String range;
     private String textDescription;
     private String htmlDescription;
@@ -37,5 +38,4 @@ public class ProductRangeDTO {
     public void setImage(String image) {
         this.image = image;
     }
-
 }

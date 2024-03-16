@@ -27,5 +27,4 @@ public class ProductRangeController {
     public List<ProductRangeDTO> getAllProductsRange(){
         return productRangeService.getAllProductsRange();
     }
-    
 }

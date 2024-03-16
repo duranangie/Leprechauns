@@ -28,12 +28,10 @@ public class OrderController {
         return orderService.getAllOrders();
     }
 
-
     @GetMapping("/orderstatus")
     public List<String> getOrderStatus(){
         return orderService.getOrderStatus();
     }
-
 
     @GetMapping("/deliver")
     public List<Object> findOrdersByExpectedDeliveryBeforeActual() {

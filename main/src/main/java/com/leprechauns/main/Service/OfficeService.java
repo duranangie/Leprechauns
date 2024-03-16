@@ -1,4 +1,5 @@
 package com.leprechauns.main.Service;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class OfficeService {
+    
     private final OfficeRepository officeRepository;
 
     @Autowired
@@ -50,13 +52,13 @@ public class OfficeService {
                 case "address2":
                     dto.setAddressLine2((String) objects[index]);
                     break;
-                }
             }
-        );
+        });
         return dto;
     }
 
-    public List<OfficeDTO> getOfficeDTOListFromObjectArray(List<Object[]> objectList, Map<String, Integer> propertyIndices) {
+    public List<OfficeDTO> getOfficeDTOListFromObjectArray(List<Object[]> objectList,
+            Map<String, Integer> propertyIndices) {
         return objectList.stream()
                 .map(objects -> convertToObject(objects, propertyIndices))
                 .collect(Collectors.toList());
@@ -75,18 +77,18 @@ public class OfficeService {
         Map<String, Integer> propertyIndices = Map.of("phone", 0, "city", 1);
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
     }
-    
+
     public List<OfficeDTO> findOfficeCodeAndCity() {
         List<Object[]> objectList = officeRepository.findOfficeCodeAndCity();
         Map<String, Integer> propertyIndices = Map.of("officeCode", 0, "city", 1);
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
     }
-    
-    public List<Object[]> findOfficeAddress(){
+
+    public List<Object[]> findOfficeAddress() {
         return officeRepository.findOfficeAddress();
     }
 
-    public List<OfficeDTO> findOfficeDontWorkEmployeeRangeFrutales(){
+    public List<OfficeDTO> findOfficeDontWorkEmployeeRangeFrutales() {
         List<Object[]> objectList = officeRepository.findOfficeEmployeeDontWorkEachProductFrutal();
         Map<String, Integer> propertyIndices = Map.of("officeCode", 0);
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);

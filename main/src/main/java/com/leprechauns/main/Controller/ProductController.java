@@ -22,6 +22,7 @@ public class ProductController {
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
+
     @GetMapping
     public List<ProductDTO> getAllProducts(){
         return productService.getAllProducts();
@@ -32,13 +33,10 @@ public class ProductController {
         return productService.findProductStock();
     }
 
-
-
     @GetMapping("/productsName")
     public List<String> findNameProduct() {
         return productService.findNameProduct();
     }
-
 
     @GetMapping("/productsdescription")
     public List<String> findDescriptionProduct() {
@@ -49,9 +47,4 @@ public class ProductController {
     public List<Double[]> findPrice() {
         return productService.findPrice();
     }
-
-
-
-    
-
 }

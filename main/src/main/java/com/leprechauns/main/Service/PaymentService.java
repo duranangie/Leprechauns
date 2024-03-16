@@ -14,6 +14,7 @@ import com.leprechauns.main.Repository.PaymentRepository;
 
 @Service
 public class PaymentService {
+    
     private final PaymentRepository paymentRepository;
 
     @PersistenceContext
@@ -30,7 +31,7 @@ public class PaymentService {
                 .toList();
     }
 
-    public List<Integer> findCustomerPayment2008(){
+    public List<Integer> findCustomerPayment2008() {
         return paymentRepository.findCustomerPayment2008();
     }
 
@@ -38,23 +39,23 @@ public class PaymentService {
         return paymentRepository.findPayments2008PayPal();
     }
 
-    public List<String> findPaymentForm(){
+    public List<String> findPaymentForm() {
         return paymentRepository.findPaymentForm();
     }
 
-    public List<Map<String, Object>> findPayingCustomerSalesEmployee(){
+    public List<Map<String, Object>> findPayingCustomerSalesEmployee() {
         return paymentRepository.findPayingCustomerSalesEmployee();
     }
 
-    public List<Map<String, Object>> findPayingCustomerSalesEmployeeWithOffice(){
+    public List<Map<String, Object>> findPayingCustomerSalesEmployeeWithOffice() {
         return paymentRepository.findPayingCustomerSalesEmployeeWithOffice();
     }
 
-    public List<Double> findAveragePayment(){
+    public List<Double> findAveragePayment() {
         return paymentRepository.findAveragePayment();
     }
 
-    public List<Map<String, Object>> findTotalPaymentPerYear(){
+    public List<Map<String, Object>> findTotalPaymentPerYear() {
         return paymentRepository.findTotalPaymentPerYear();
     }
 }

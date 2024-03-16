@@ -11,16 +11,13 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "producto")
 public class Product {
+
     @Id
     @Column(name = "codigo_producto")
     private String productId;
 
     @Column(name = "nombre", nullable = false)
     private String name;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "gama", nullable = false)
-    private ProductRange rangeProduct;
 
     @Column(name = "dimensiones")
     private String dimensions;
@@ -39,10 +36,6 @@ public class Product {
 
     @Column(name = "precio_proveedor")
     private double supplierPrice;
-    
-    @JsonIgnore
-    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
-    private List<OrderDetails> product;
     
     public String getProductId() {
         return productId;
@@ -116,10 +109,16 @@ public class Product {
         this.supplierPrice = supplierPrice;
     }
 
-    
+    // Relations
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "gama", nullable = false)
+    private ProductRange rangeProduct;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+    private List<OrderDetails> product;
 
     /* DTO */
-
     public ProductDTO toDTO() {
         ProductDTO dto = new ProductDTO();
         dto.setProductId(this.productId);
@@ -149,5 +148,4 @@ public class Product {
                 ", supplierPrice=" + supplierPrice +
                 '}';
     }
-
 }

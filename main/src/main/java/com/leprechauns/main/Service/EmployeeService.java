@@ -24,6 +24,7 @@ public class EmployeeService {
     public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -33,40 +34,41 @@ public class EmployeeService {
         }
         EmployeeDTO dto = new EmployeeDTO();
         propertyIndices.forEach((propertyName, index) -> {
-                    switch (propertyName) {
-                        case "employeeId":
-                            dto.setEmployeeId((Integer) objects[index]);
-                            break;
-                        case "employeeName":
-                            dto.setEmployeeName((String) objects[index]);
-                            break;
-                        case "lastName1":
-                            dto.setLastName1((String) objects[index]);
-                            break;
-                        case "lastName2":
-                            dto.setLastName2((String) objects[index]);
-                            break;
-                        case "extension":
-                            dto.setExtension((String) objects[index]);
-                            break;
-                        case "email":
-                            dto.setEmail((String) objects[index]);
-                            break;
-                        case "rol":
-                            dto.setRol((String) objects[index]);
-                            break;
-                        case "office":
-                            dto.setOffice((String) objects[index]);
-                            break;
-                        case "bossCode":
-                            dto.setBossCode((Integer) objects[index]);
-                            break;
-                    }
+            switch (propertyName) {
+                case "employeeId":
+                    dto.setEmployeeId((Integer) objects[index]);
+                    break;
+                case "employeeName":
+                    dto.setEmployeeName((String) objects[index]);
+                    break;
+                case "lastName1":
+                    dto.setLastName1((String) objects[index]);
+                    break;
+                case "lastName2":
+                    dto.setLastName2((String) objects[index]);
+                    break;
+                case "extension":
+                    dto.setExtension((String) objects[index]);
+                    break;
+                case "email":
+                    dto.setEmail((String) objects[index]);
+                    break;
+                case "rol":
+                    dto.setRol((String) objects[index]);
+                    break;
+                case "office":
+                    dto.setOffice((String) objects[index]);
+                    break;
+                case "bossCode":
+                    dto.setBossCode((Integer) objects[index]);
+                    break;
+            }
         });
         return dto;
     }
 
-    public List<EmployeeDTO> getOfficeDTOListFromObjectArray(List<Object[]> objectList, Map<String, Integer> propertyIndices) {
+    public List<EmployeeDTO> getOfficeDTOListFromObjectArray(List<Object[]> objectList,
+            Map<String, Integer> propertyIndices) {
         return objectList.stream()
                 .map(objects -> convertToObject(objects, propertyIndices))
                 .collect(Collectors.toList());
@@ -80,53 +82,54 @@ public class EmployeeService {
                 .toList();
     }
 
-    public List<EmployeeDTO> findEmployeeWithBoss7(){
+    public List<EmployeeDTO> findEmployeeWithBoss7() {
         List<Object[]> objectList = employeeRepository.findEmployeeWithBoss7();
         Map<String, Integer> propertyIndices = Map.of("employeeName", 0, "lastName1", 1, "lastName2", 2, "email", 3);
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
-    } 
+    }
 
-    public List<EmployeeDTO> findDatasOfBoss(){
+    public List<EmployeeDTO> findDatasOfBoss() {
         List<Object[]> objectList = employeeRepository.findDatasOfBoss();
-        Map<String, Integer> propertyIndices = Map.of("rol", 0,"employeeName", 1, "lastName1", 2, "lastName2", 3, "email", 4);
+        Map<String, Integer> propertyIndices = Map.of("rol", 0, "employeeName", 1, "lastName1", 2, "lastName2", 3,
+                "email", 4);
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
-    } 
+    }
 
-    public List<EmployeeDTO> findEmployeeIsntSalesArea(){
+    public List<EmployeeDTO> findEmployeeIsntSalesArea() {
         List<Object[]> objectList = employeeRepository.findEmployeeIsntSalesArea();
         Map<String, Integer> propertyIndices = Map.of("employeeName", 0, "lastName1", 1, "lastName2", 2, "rol", 3);
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
-    } 
-
-     public List<Map<String, Object>> findEmployeesWithBosses() {
-        return employeeRepository.findEmployeesWithBosses();     
     }
 
-    public List<Map<String, Object>> findEmployeeWithBossAndBossOfTheBoss(){
+    public List<Map<String, Object>> findEmployeesWithBosses() {
+        return employeeRepository.findEmployeesWithBosses();
+    }
+
+    public List<Map<String, Object>> findEmployeeWithBossAndBossOfTheBoss() {
         return employeeRepository.findEmployeeWithBossAndBossOfTheBoss();
     }
 
-    public List<EmployeeDTO> findEmployeeWithoutOffice(){
+    public List<EmployeeDTO> findEmployeeWithoutOffice() {
         List<Object[]> objectList = employeeRepository.findEmployeeWithoutOffice();
         Map<String, Integer> propertyIndices = Map.of("office", 0, "employeeName", 1);
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
     }
 
-    public List<String> findEmployeeWithoutCustomer(){
+    public List<String> findEmployeeWithoutCustomer() {
         return employeeRepository.findEmployeeWithoutCustomer();
     }
 
     @SuppressWarnings("unchecked")
     public List<Object[]> findEmployeeWithoutCustomerWithDatasOffice() {
         return entityManager.createQuery("SELECT DISTINCT e.employeeName, o " +
-                                          "FROM Employee e " +
-                                          "LEFT JOIN Customer c ON e.employeeId = c.sales.employeeId " +
-                                          "LEFT JOIN Office o ON e.office.officeCode = o.officeCode " +
-                                          "WHERE c.sales.employeeId IS NULL")
-                           .getResultList();
+                "FROM Employee e " +
+                "LEFT JOIN Customer c ON e.employeeId = c.sales.employeeId " +
+                "LEFT JOIN Office o ON e.office.officeCode = o.officeCode " +
+                "WHERE c.sales.employeeId IS NULL")
+                .getResultList();
     }
 
-    public List<EmployeeDTO> findEmployeeWithoutOfficeAndCustomer(){
+    public List<EmployeeDTO> findEmployeeWithoutOfficeAndCustomer() {
         List<Object[]> objectList = employeeRepository.findEmployeeWithoutOfficeAndCustomer();
         Map<String, Integer> propertyIndices = Map.of("office", 0, "employeeName", 1);
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
@@ -148,14 +151,14 @@ public class EmployeeService {
             rowData.put("extension", employee.getExtension());
             rowData.put("email", employee.getEmail());
             rowData.put("rol", employee.getRol());
-            rowData.put("boss_name", bossName); 
-            
+            rowData.put("boss_name", bossName);
+
             result.add(rowData);
         }
         return result;
     }
 
-    public List<Integer> findEmployeeNumber(){
+    public List<Integer> findEmployeeNumber() {
         return employeeRepository.findEmployeeNumber();
     }
 
@@ -167,7 +170,7 @@ public class EmployeeService {
             String employeeName = (String) row[0];
             Long customerCount = (Long) row[1];
 
-            Map<String, Object> rowData = new LinkedHashMap<>(); 
+            Map<String, Object> rowData = new LinkedHashMap<>();
             rowData.put("employeeName_rep_ventas", employeeName);
             rowData.put("number_customers", customerCount);
 

@@ -12,17 +12,6 @@ public class OrderDetails {
 
     @EmbeddedId
     private OrderDetailId id;
-    
-    @MapsId("orderCode")
-    @ManyToOne(fetch = FetchType.EAGER)
-
-    @JoinColumn(name = "codigo_pedido")
-    private Order order;
-    
-    @MapsId("productCode")
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "codigo_producto")
-    private Product product;
 
     @Column(name = "cantidad", nullable = false)
     private int amount;
@@ -81,6 +70,17 @@ public class OrderDetails {
         this.numberLine = numberLine;
     }
 
+    // Relations
+    @MapsId("orderCode")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "codigo_pedido")
+    private Order order;
+    
+    @MapsId("productCode")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "codigo_producto")
+    private Product product;
+
     /*DTO */
     public OrderDetailsDTO toDTO(){
         OrderDetailsDTO dto = new OrderDetailsDTO();
@@ -91,8 +91,6 @@ public class OrderDetails {
         dto.setNumberLine(this.numberLine);
         return dto;
     }
-
-
 
     @Override
     public String toString() {

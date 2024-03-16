@@ -9,7 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ChanceList {
-     public static List<Map<Object, Object>> chanceList(List<Object[]> results, String... fields) {
+
+    public static List<Map<Object, Object>> chanceList(List<Object[]> results, String... fields) {
         List<Map<Object, Object>> chanceResults = new ArrayList<>();
     
         for (Object[] result : results) {
@@ -19,7 +20,6 @@ public class ChanceList {
             }
             chanceResults.add(entry);
         }
-
         return chanceResults;
     }
 }

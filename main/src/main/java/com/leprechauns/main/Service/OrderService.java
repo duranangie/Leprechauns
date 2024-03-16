@@ -12,14 +12,14 @@ import com.leprechauns.main.Repository.OrderRepository;
 @Service
 public class OrderService {
 
-
     public final OrderRepository orderRepository;
+
     @Autowired
     public OrderService(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 
-    public List<OrderDTO> getAllOrders(){
+    public List<OrderDTO> getAllOrders() {
         return orderRepository.findAll().stream()
                 .map(Order::toDTO)
                 .toList();
@@ -32,7 +32,7 @@ public class OrderService {
     public List<Object> findOrdersByExpectedDeliveryBeforeActual() {
         return orderRepository.findOrdersByExpectedDeliveryBeforeActual();
     }
-    
+
     public List<Object[]> findDay() {
         return orderRepository.findDay();
     }
@@ -45,7 +45,7 @@ public class OrderService {
         return orderRepository.findOrdersInJanuary();
     }
 
-    public List<Object[]> countByEstado(){
+    public List<Object[]> countByEstado() {
         return orderRepository.countByEstado();
     }
 }

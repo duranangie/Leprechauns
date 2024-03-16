@@ -31,20 +31,6 @@ public class Employee {
     @Column(name = "puesto")
     private String rol;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "codigo_oficina")
-    private Office office;
-
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "codigo_jefe")
-    private Employee bossCode;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "sales", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Customer> customers;
-
     public Integer getEmployeeId() {
         return employeeId;
     }
@@ -125,8 +111,22 @@ public class Employee {
         this.customers = customers;
     }
 
-    /* DTO */
+    // Relations
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "codigo_oficina")
+    private Office office;
 
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "codigo_jefe")
+    private Employee bossCode;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "sales", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Customer> customers;
+
+    /* DTO */
     public EmployeeDTO toDTO() {
         EmployeeDTO dto = new EmployeeDTO();
         dto.setEmployeeId(this.employeeId);

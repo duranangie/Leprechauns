@@ -12,6 +12,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "pedido")
 public class Order {
+
     @Id
     @Column(name = "codigo_pedido")
     private Integer orderCode;
@@ -33,14 +34,6 @@ public class Order {
 
     @Column(name = "comentarios")
     private String comments;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "codigo_cliente", nullable = false)
-    private Customer customer;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
-    private List<OrderDetails> order;
 
     public Integer getOrderCode() {
         return orderCode;
@@ -98,8 +91,16 @@ public class Order {
         this.customer = customer;
     }
 
-    /* DTO */
+    // Relations
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "codigo_cliente", nullable = false)
+    private Customer customer;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+    private List<OrderDetails> order;
+
+    /* DTO */
     public OrderDTO toDTO() {
         OrderDTO dto = new OrderDTO();
         dto.setOrderCode(this.orderCode);
