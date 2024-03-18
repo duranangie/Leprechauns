@@ -125,4 +125,6 @@ public class CustomerController {
     public List<Map<Object, Object>> firstLastPaymentDateByClient() {
         return customerService.firstLastPaymentDateByClient();
     }
+
+    // HOLA
 }
