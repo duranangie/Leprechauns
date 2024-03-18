@@ -31,12 +31,12 @@ public class PaymentService {
                 .toList();
     }
 
-    public List<Integer> findCustomerPayment2008() {
-        return paymentRepository.findCustomerPayment2008();
+    public List<Integer> findCustomerPayment2008(int year) {
+        return paymentRepository.findCustomerPayment2008(year);
     }
 
-    public List<Payment> findPayments2008PayPal() {
-        return paymentRepository.findPayments2008PayPal();
+    public List<Payment> findPayments2008PayPal(int year, String paymentForm) {
+        return paymentRepository.findPayments2008PayPal(year, paymentForm);
     }
 
     public List<String> findPaymentForm() {
@@ -51,8 +51,8 @@ public class PaymentService {
         return paymentRepository.findPayingCustomerSalesEmployeeWithOffice();
     }
 
-    public List<Double> findAveragePayment() {
-        return paymentRepository.findAveragePayment();
+    public List<Double> findAveragePayment(int year) {
+        return paymentRepository.findAveragePayment(year);
     }
 
     public List<Map<String, Object>> findTotalPaymentPerYear() {

@@ -22,11 +22,11 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
 
     @Query("SELECT o.orderCode, o.orderDate "
             + "FROM Order o "
-            + "WHERE o.status = 'Rechazado' AND FUNCTION('YEAR', o.orderDate) = 2009")
-    List<Object[]> findOrders();
+            + "WHERE o.status = 'Rechazado' AND FUNCTION('YEAR', o.orderDate) = :year")
+    List<Object[]> findOrders(int year);
 
-    @Query("SELECT o.orderCode, o.orderDate, o.deliverDate, o.status FROM Order o WHERE EXTRACT(MONTH FROM o.deliverDate) = 1 AND o.status = 'Entregado'")
-    List<Object> findOrdersInJanuary();
+    @Query("SELECT o.orderCode, o.orderDate, o.deliverDate, o.status FROM Order o WHERE EXTRACT(MONTH FROM o.deliverDate) = 1 AND o.status = :deadline")
+    List<Object> findOrdersInJanuary(String deadline);
 
     @Query("SELECT COUNT(o) AS orderCount, o.status " +
             "FROM Order o " +

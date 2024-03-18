@@ -37,12 +37,12 @@ public class OrderService {
         return orderRepository.findDay();
     }
 
-    public List<Object[]> findOrders() {
-        return orderRepository.findOrders();
+    public List<Object[]> findOrders(int year) {
+        return orderRepository.findOrders(year);
     }
 
-    public List<Object> findOrdersInJanuary() {
-        return orderRepository.findOrdersInJanuary();
+    public List<Object> findOrdersInJanuary(String deadline) {
+        return orderRepository.findOrdersInJanuary(deadline);
     }
 
     public List<Object[]> countByEstado() {

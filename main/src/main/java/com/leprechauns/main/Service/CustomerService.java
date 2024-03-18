@@ -1,5 +1,6 @@
 package com.leprechauns.main.Service;
 
+import com.leprechauns.main.Exceptions.NotFoundEndPoint;
 import com.leprechauns.main.Entity.ChanceList;
 import com.leprechauns.main.Entity.Customer;
 import com.leprechauns.main.Entity.DTO.CustomerDTO;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
+
 
 @Service
 public class CustomerService {
@@ -31,14 +33,14 @@ public class CustomerService {
                 .toList();
     }
 
-    public List<CustomerDTO> findCustomersMadrid() {
-        return customerRepository.findCustomersMadrid().stream()
+    public List<CustomerDTO> findCustomersMadrid(String city, String sales, int employee) {
+        return customerRepository.findCustomersMadrid(city, sales, employee).stream()
                 .map(Customer::toDTO)
                 .toList();
     };
 
-    public List<CustomerDTO> findNameSpain() {
-        return customerRepository.findNameSpain().stream()
+    public List<CustomerDTO> findNameSpain(String country) {
+        return customerRepository.findNameSpain(country).stream()
                 .map(Customer::toDTO)
                 .toList();
     }
@@ -106,6 +108,11 @@ public class CustomerService {
     }
 
     public int clientsCountInCity(String city) {
+        boolean existsCity = customerRepository.existsByCity(city);
+        if (!existsCity) {
+            throw new NotFoundEndPoint("The city " + city + " doesn't exist in the database.");
+        }
+    
         return customerRepository.clientsCountInCity(city);
     }
 

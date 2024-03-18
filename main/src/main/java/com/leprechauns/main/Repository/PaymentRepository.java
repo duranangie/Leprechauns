@@ -12,11 +12,11 @@ import com.leprechauns.main.Entity.Payment;
 @Repository
 public interface PaymentRepository extends JpaRepository<Payment, String> {
 
-        @Query("SELECT DISTINCT customer.customerId FROM Payment WHERE EXTRACT(YEAR FROM payDay) = 2008")
-        List<Integer> findCustomerPayment2008();
+        @Query("SELECT DISTINCT customer.customerId FROM Payment WHERE EXTRACT(YEAR FROM payDay) = :year")
+        List<Integer> findCustomerPayment2008(int year);
 
-        @Query("SELECT p FROM Payment p WHERE EXTRACT(YEAR FROM payDay) = 2008 AND paymentForm = 'PayPal' ORDER BY payDay DESC")
-        List<Payment> findPayments2008PayPal();
+        @Query("SELECT p FROM Payment p WHERE EXTRACT(YEAR FROM payDay) = :year AND paymentForm = :paymentForm ORDER BY payDay DESC")
+        List<Payment> findPayments2008PayPal(int year, String paymentForm);
 
         @Query("SELECT DISTINCT paymentForm FROM Payment")
         List<String> findPaymentForm();
@@ -34,8 +34,8 @@ public interface PaymentRepository extends JpaRepository<Payment, String> {
                         + "JOIN Office o ON e.office.officeCode = o.officeCode")
         List<Map<String, Object>> findPayingCustomerSalesEmployeeWithOffice();
 
-        @Query("SELECT ROUND(AVG(total), 2) AS average_payment FROM Payment WHERE EXTRACT(YEAR FROM payDay) = 2009")
-        List<Double> findAveragePayment();
+        @Query("SELECT ROUND(AVG(total), 2) AS average_payment FROM Payment WHERE EXTRACT(YEAR FROM payDay) = :year")
+        List<Double> findAveragePayment(int year);
 
         @Query("SELECT EXTRACT(YEAR FROM payDay) AS year, SUM(total) AS total_payments FROM Payment GROUP BY EXTRACT(YEAR FROM payDay)")
         List<Map<String, Object>> findTotalPaymentPerYear();

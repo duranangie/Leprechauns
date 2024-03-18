@@ -13,9 +13,9 @@ public interface ProductRepository extends JpaRepository<Product, String> {
 
         @Query("SELECT p.productId "
                         + "FROM Product p "
-                        + "WHERE p.rangeProduct.range = 'Ornamentales' AND p.amountInStock > 100 "
+                        + "WHERE p.rangeProduct.range = :rangeProduct AND p.amountInStock > :amount "
                         + "ORDER BY p.salePrice DESC")
-        List<String> findProductStock();
+        List<String> findProductStock(String rangeProduct, double amount);
 
         @Query("SELECT pr.name AS name_product "
                         + "FROM Product pr "
@@ -32,4 +32,7 @@ public interface ProductRepository extends JpaRepository<Product, String> {
 
         @Query("SELECT MAX(p.salePrice) AS maxSalePrice, MIN(p.salePrice) AS minSalePrice FROM Product p")
         List<Double[]> findPrice();
+
+        boolean existsByRangeProduct_Range(String rangeProduct);
+
 }

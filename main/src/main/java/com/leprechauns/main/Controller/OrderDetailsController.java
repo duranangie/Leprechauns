@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,9 +40,9 @@ public class OrderDetailsController {
         return orderDetailsService.findTotalProductEachProduct();
     }
 
-    @GetMapping("/20-products-total-unit")
-    public List<Map<String, Object>> get20ProductTotalUnits() {
-        return orderDetailsService.find20ProductTotalUnits();
+    @GetMapping("/20-products-total-unit/{limit}")
+    public List<Map<String, Object>> get20ProductTotalUnits(@PathVariable int limit) {
+        return orderDetailsService.find20ProductTotalUnits(limit);
     }
 
     @GetMapping("/tax-vat-total-charged")
@@ -59,8 +60,8 @@ public class OrderDetailsController {
         return orderDetailsService.findVATAndInvoiceGroupByProductCodeAndOr();
     }
 
-    @GetMapping("/product-more-3000")
-    public List<Map<String, Object>> getInvoiceMore3000() {
-        return orderDetailsService.findInvoiceMore3000();
+    @GetMapping("/product-more-3000/{max}")
+    public List<Map<String, Object>> getInvoiceMore3000(@PathVariable int max) {
+        return orderDetailsService.findInvoiceMore3000(max);
     }
 }

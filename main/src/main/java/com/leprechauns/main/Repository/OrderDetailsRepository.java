@@ -28,8 +28,8 @@ public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Orde
                         + "JOIN Product p ON dp.product.productId = p.productId "
                         + "GROUP BY dp.product.productId, p.name "
                         + "ORDER BY total_units_sold DESC "
-                        + "LIMIT 20")
-        List<Map<String, Object>> find20ProductTotalUnits();
+                        + "LIMIT :limit")
+        List<Map<String, Object>> find20ProductTotalUnits(int limit);
 
         @Query("SELECT SUM(dp.amount * p.salePrice) AS tax_base, SUM(dp.amount * p.salePrice) * 0.21 AS VAT, SUM(dp.amount * p.salePrice) * 1.21 AS total_charged "
                         + "FROM OrderDetails dp "
@@ -53,6 +53,6 @@ public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Orde
                         + "FROM OrderDetails dp "
                         + "JOIN Product p ON dp.product.productId = p.productId "
                         + "GROUP BY p.name "
-                        + "HAVING SUM(dp.amount * p.salePrice) > 3000")
-        List<Map<String, Object>> findInvoiceMore3000();
+                        + "HAVING SUM(dp.amount * p.salePrice) > :maximum")
+        List<Map<String, Object>> findInvoiceMore3000(int maximum);
 }

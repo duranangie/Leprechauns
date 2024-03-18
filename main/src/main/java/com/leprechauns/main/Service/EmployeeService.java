@@ -67,8 +67,7 @@ public class EmployeeService {
         return dto;
     }
 
-    public List<EmployeeDTO> getOfficeDTOListFromObjectArray(List<Object[]> objectList,
-            Map<String, Integer> propertyIndices) {
+    public List<EmployeeDTO> getOfficeDTOListFromObjectArray(List<Object[]> objectList,Map<String, Integer> propertyIndices) {
         return objectList.stream()
                 .map(objects -> convertToObject(objects, propertyIndices))
                 .collect(Collectors.toList());
@@ -82,8 +81,8 @@ public class EmployeeService {
                 .toList();
     }
 
-    public List<EmployeeDTO> findEmployeeWithBoss7() {
-        List<Object[]> objectList = employeeRepository.findEmployeeWithBoss7();
+    public List<EmployeeDTO> findEmployeeWithBoss7(int employeeId) {
+        List<Object[]> objectList = employeeRepository.findEmployeeWithBoss7(employeeId);
         Map<String, Integer> propertyIndices = Map.of("employeeName", 0, "lastName1", 1, "lastName2", 2, "email", 3);
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
     }
@@ -95,8 +94,8 @@ public class EmployeeService {
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
     }
 
-    public List<EmployeeDTO> findEmployeeIsntSalesArea() {
-        List<Object[]> objectList = employeeRepository.findEmployeeIsntSalesArea();
+    public List<EmployeeDTO> findEmployeeIsntSalesArea(String sales) {
+        List<Object[]> objectList = employeeRepository.findEmployeeIsntSalesArea(sales);
         Map<String, Integer> propertyIndices = Map.of("employeeName", 0, "lastName1", 1, "lastName2", 2, "rol", 3);
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
     }

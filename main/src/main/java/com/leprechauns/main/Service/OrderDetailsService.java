@@ -33,8 +33,8 @@ public class OrderDetailsService {
         return orderDetailRepository.findTotalProductEachProduct();
     }
 
-    public List<Map<String, Object>> find20ProductTotalUnits() {
-        List<Map<String, Object>> productList = orderDetailRepository.find20ProductTotalUnits();
+    public List<Map<String, Object>> find20ProductTotalUnits(int limit) {
+        List<Map<String, Object>> productList = orderDetailRepository.find20ProductTotalUnits(limit);
 
         productList = productList.stream()
                 .sorted(Comparator.comparing(product -> (String) product.get("productId")))
@@ -54,7 +54,7 @@ public class OrderDetailsService {
         return orderDetailRepository.findVATAndInvoiceGroupByProductCodeAndOr();
     }
 
-    public List<Map<String, Object>> findInvoiceMore3000() {
-        return orderDetailRepository.findInvoiceMore3000();
+    public List<Map<String, Object>> findInvoiceMore3000(int maximum) {
+        return orderDetailRepository.findInvoiceMore3000(maximum);
     }
 }

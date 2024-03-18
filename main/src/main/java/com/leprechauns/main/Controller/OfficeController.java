@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,20 +36,20 @@ public class OfficeController {
         return ResponseEntity.ok(officeCodeAndCity);
     }
 
-    @GetMapping("/office-spain")
-    public ResponseEntity<List<OfficeDTO>> getOfficesInSpain() {
-        List<OfficeDTO> officesInSpain = officeService.findOfficesSpain();
+    @GetMapping("/office-spain/{country}")
+    public ResponseEntity<List<OfficeDTO>> getOfficesInSpain(@PathVariable String country) {
+        List<OfficeDTO> officesInSpain = officeService.findOfficesSpain(country);
         return ResponseEntity.ok(officesInSpain);
     }
 
-    @GetMapping("/office-address-Fuenlabra")
-    public List<Object[]> getOfficeAddress(){
-        return officeService.findOfficeAddress();
+    @GetMapping("/office-address-Fuenlabrada/{city}")
+    public List<Object[]> getOfficeAddress(@PathVariable String city){
+        return officeService.findOfficeAddress(city);
     }
 
-    @GetMapping("/office-employee-range-Frutales")
-    public ResponseEntity<List<OfficeDTO>> getOfficeEmployeeDontWorkEachProductFrutal(){
-        List<OfficeDTO> officeAddressFuenlabra = officeService.findOfficeDontWorkEmployeeRangeFrutales();
-        return ResponseEntity.ok(officeAddressFuenlabra);
+    @GetMapping("/office-employee-range-Frutales/{gamma}")
+    public ResponseEntity<List<OfficeDTO>> getOfficeEmployeeDontWorkEachProductFrutal(@PathVariable String gamma){
+        List<OfficeDTO> officeEmployeeDontWorkEachProductFrutal = officeService.findOfficeDontWorkEmployeeRangeFrutales(gamma);
+        return ResponseEntity.ok(officeEmployeeDontWorkEachProductFrutal);
     }
 }

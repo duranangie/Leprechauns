@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,14 +44,14 @@ public class OrderController {
         return orderService.findDay();
     }
 
-    @GetMapping("/rejected")
-    public List<Object[]> findOrders() {
-        return orderService.findOrders();
+    @GetMapping("/rejected/{year}")
+    public List<Object[]> findOrders(@PathVariable int year) {
+        return orderService.findOrders(year);
     }
 
-    @GetMapping("/january-delivered")
-    public List<Object> getJanuaryDeliveredOrders() {
-        return orderService.findOrdersInJanuary();
+    @GetMapping("/january-delivered/{deadline}")
+    public List<Object> getJanuaryDeliveredOrders(@PathVariable String deadline) {
+        return orderService.findOrdersInJanuary(deadline);
     }
 
     @GetMapping("/count")

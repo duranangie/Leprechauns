@@ -15,8 +15,8 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
         @Query("SELECT DISTINCT e.employeeName, e.lastName1, e.lastName2, e.email "
                         + "FROM Employee e "
                         + "JOIN Employee j ON e.bossCode.employeeId = j.bossCode.employeeId "
-                        + "WHERE j.bossCode.employeeId = 7")
-        List<Object[]> findEmployeeWithBoss7();
+                        + "WHERE j.bossCode.employeeId = :employeeId")
+        List<Object[]> findEmployeeWithBoss7(int employeeId);
 
         @Query("SELECT rol, employeeName, lastName1, lastName2, email "
                         + "FROM Employee "
@@ -25,8 +25,8 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
         @Query("SELECT employeeName, lastName1, lastName2, rol "
                         + "FROM Employee "
-                        + "WHERE rol != 'Representante Ventas'")
-        List<Object[]> findEmployeeIsntSalesArea();
+                        + "WHERE rol != :sales")
+        List<Object[]> findEmployeeIsntSalesArea(String sales);
 
         @Query("SELECT NEW map(e.employeeName AS employee_name, j.employeeName AS boss_name) "
                         + "FROM Employee e "

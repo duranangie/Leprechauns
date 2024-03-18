@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,14 +31,14 @@ public class PaymentController {
         return paymentService.getALllPayments();
     }
     
-    @GetMapping("/customer-with-payment-2008")
-    public List<Integer> getCustomerPayment2008(){
-        return paymentService.findCustomerPayment2008();
+    @GetMapping("/customer-with-payment-2008/{year}")
+    public List<Integer> getCustomerPayment2008(@PathVariable int year){
+        return paymentService.findCustomerPayment2008(year);
     }
 
-    @GetMapping("/payment-2008-paypal")
-    public List<Payment> getPayments2008PayPal(){
-        return paymentService.findPayments2008PayPal();
+    @GetMapping("/payment-2008-paypal/{year}/{paymentForm}")
+    public List<Payment> getPayments2008PayPal( @PathVariable int year,  @PathVariable String paymentForm ){
+        return paymentService.findPayments2008PayPal(year, paymentForm);
     }
 
     @GetMapping("/payment-form")
@@ -55,9 +56,9 @@ public class PaymentController {
         return paymentService.findPayingCustomerSalesEmployeeWithOffice();
     }
 
-    @GetMapping("/average-payment-2009")
-    public List<Double> getAveragePayment(){
-        return paymentService.findAveragePayment();
+    @GetMapping("/average-payment-2009/{year}")
+    public List<Double> getAveragePayment(@PathVariable int year){
+        return paymentService.findAveragePayment(year);
     }
 
     @GetMapping("/total-payments-per-year")

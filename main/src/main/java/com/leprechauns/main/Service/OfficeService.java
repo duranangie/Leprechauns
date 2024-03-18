@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.leprechauns.main.Entity.Office;
 import com.leprechauns.main.Entity.DTO.OfficeDTO;
+import com.leprechauns.main.Exceptions.NotFoundEndPoint;
 import com.leprechauns.main.Repository.OfficeRepository;
 
 import java.util.List;
@@ -72,24 +73,27 @@ public class OfficeService {
                 .toList();
     }
 
-    public List<OfficeDTO> findOfficesSpain() {
-        List<Object[]> objectList = officeRepository.findOfficeSpain();
+    public List<OfficeDTO> findOfficesSpain(String country) {
+    
+        List<Object[]> objectList = officeRepository.findOfficeSpain(country);
         Map<String, Integer> propertyIndices = Map.of("phone", 0, "city", 1);
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
     }
 
     public List<OfficeDTO> findOfficeCodeAndCity() {
+
         List<Object[]> objectList = officeRepository.findOfficeCodeAndCity();
         Map<String, Integer> propertyIndices = Map.of("officeCode", 0, "city", 1);
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
     }
 
-    public List<Object[]> findOfficeAddress() {
-        return officeRepository.findOfficeAddress();
+    public List<Object[]> findOfficeAddress(String city) {
+        
+        return officeRepository.findOfficeAddress(city);
     }
 
-    public List<OfficeDTO> findOfficeDontWorkEmployeeRangeFrutales() {
-        List<Object[]> objectList = officeRepository.findOfficeEmployeeDontWorkEachProductFrutal();
+    public List<OfficeDTO> findOfficeDontWorkEmployeeRangeFrutales(String gamma) {
+        List<Object[]> objectList = officeRepository.findOfficeEmployeeDontWorkEachProductFrutal(gamma);
         Map<String, Integer> propertyIndices = Map.of("officeCode", 0);
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
     }

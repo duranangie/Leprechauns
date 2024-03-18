@@ -14,12 +14,12 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     List<Customer> findByCountryLikeIgnoreCase(String country);
 
     @Query("SELECT c FROM Customer c "
-            + "WHERE c.city = 'Madrid' "
-            + "AND (c.sales.employeeId = 11 OR c.sales.employeeId = 30)")
-    List<Customer> findCustomersMadrid();
+            + "WHERE c.city = :city "
+            + "AND (c.sales.employeeId = :sales OR c.sales.employeeId = :employee)")
+    List<Customer> findCustomersMadrid(String city, String sales, int employee);
 
-    @Query("SELECT c.customerName FROM Customer c WHERE c.country = 'Spain'")
-    List<Customer> findNameSpain();
+    @Query("SELECT c.customerName FROM Customer c WHERE c.country = :country ")
+    List<Customer> findNameSpain(String country);
 
     @Query("SELECT DISTINCT c.customerId, c.customerName, CONCAT(e.employeeName, ' ', e.lastName1, ' ', e.lastName2) "
             + "FROM Customer c "
@@ -114,4 +114,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
             "JOIN c.payments p " +
             "GROUP BY c.customerId")
     List<Object[]> firstLastPaymentDateByClient();
+
+    boolean existsByCity(String city);
 }

@@ -3,10 +3,13 @@ package com.leprechauns.main.Controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.naming.NameNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,9 +33,9 @@ public class EmployeeController  {
         return employeeService.getAllEmployees();
     }
     
-    @GetMapping("/employee-boss-7")
-    public ResponseEntity<List<EmployeeDTO>> getEmployeeWithBoss7(){
-        List<EmployeeDTO> employeeBoss = employeeService.findEmployeeWithBoss7();
+    @GetMapping("/employee-boss-7/{employeeId}")
+    public ResponseEntity<List<EmployeeDTO>> getEmployeeWithBoss7(@PathVariable int employeeId){
+        List<EmployeeDTO> employeeBoss = employeeService.findEmployeeWithBoss7(employeeId);
         return ResponseEntity.ok(employeeBoss);
     }
 
@@ -42,9 +45,9 @@ public class EmployeeController  {
         return ResponseEntity.ok(employeeBoss);
     }
 
-    @GetMapping("/employee-without-sales-area")
-    public ResponseEntity<List<EmployeeDTO>> getEmployeeIsntSalesArea(){
-        List<EmployeeDTO> employeeBoss = employeeService.findEmployeeIsntSalesArea();
+    @GetMapping("/employee-without-sales-area/{sales}")
+    public ResponseEntity<List<EmployeeDTO>> getEmployeeIsntSalesArea(@PathVariable String sales){
+        List<EmployeeDTO> employeeBoss = employeeService.findEmployeeIsntSalesArea(sales);
         return ResponseEntity.ok(employeeBoss);
     }
 
@@ -65,8 +68,12 @@ public class EmployeeController  {
     }
 
     @GetMapping("/employee-without-customer")
-    public List<String> getEmployeeWithoutCustomer(){
-        return employeeService.findEmployeeWithoutCustomer();
+    public List<String> getEmployeeWithoutCustomer() throws NameNotFoundException{
+        try {
+            return employeeService.findEmployeeWithoutCustomer();
+        } catch (Exception e) {
+           throw new NameNotFoundException("ENDPOINT NOT FOUND");
+        }
     }
 
     @GetMapping("/employee-without-customer-with-office")

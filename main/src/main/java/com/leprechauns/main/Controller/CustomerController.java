@@ -3,6 +3,8 @@ package com.leprechauns.main.Controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.naming.NameNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leprechauns.main.Entity.DTO.CustomerDTO;
+import com.leprechauns.main.Exceptions.DifferentDataTypeException;
+import com.leprechauns.main.Exceptions.NotFoundEndPoint;
 import com.leprechauns.main.Service.CustomerService;
 
 @RestController
@@ -35,14 +39,15 @@ public class CustomerController {
         return customerService.findByCountryLikeIgnoreCase();
     }
 
-    @GetMapping("/clientsInMadrid")
-    public List<CustomerDTO> findCustomersMadrid() {
-        return customerService.findCustomersMadrid();
+    @GetMapping("/clientsInMadrid/{city}/{sales}/{employee}")
+    public List<CustomerDTO> findCustomersMadrid(@PathVariable String city, @PathVariable String sales, @PathVariable int employee) {
+            return customerService.findCustomersMadrid(city, sales, employee);
     }
 
-    @GetMapping("/customerspain")
-    public List<CustomerDTO> findNameSpain() {
-        return customerService.findNameSpain();
+
+    @GetMapping("   ")
+    public List<CustomerDTO> findNameSpain(@PathVariable String country) {
+        return customerService.findNameSpain(country);
     }
 
     @GetMapping("/sales-info")
@@ -102,7 +107,8 @@ public class CustomerController {
 
     @GetMapping("/clients-count-city/{city}")
     public int clientsCountInCity(@PathVariable String city) {
-        return customerService.clientsCountInCity(city);
+        return customerService.clientsCountInCity(city);    
+        
     }
 
     @GetMapping("/clients-count-in-cities-starting-with-M")
