@@ -45,7 +45,7 @@ public class CustomerController {
     }
 
 
-    @GetMapping("   ")
+    @GetMapping("/customerSpain/{country}")
     public List<CustomerDTO> findNameSpain(@PathVariable String country) {
         return customerService.findNameSpain(country);
     }
