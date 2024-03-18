@@ -45,7 +45,7 @@ public class PaymentController {
     public List<String> getPaymentForm(){
         return paymentService.findPaymentForm();
     }
-
+    
     @GetMapping("/paying-customer-sales-person")
     public List<Map<String, Object>> getPayingCustomerSalesEmployee(){
         return paymentService.findPayingCustomerSalesEmployee();

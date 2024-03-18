@@ -3,8 +3,6 @@ package com.leprechauns.main.Controller;
 import java.util.List;
 import java.util.Map;
 
-import javax.naming.NameNotFoundException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leprechauns.main.Entity.DTO.CustomerDTO;
-import com.leprechauns.main.Exceptions.DifferentDataTypeException;
-import com.leprechauns.main.Exceptions.NotFoundEndPoint;
 import com.leprechauns.main.Service.CustomerService;
 
 @RestController
@@ -125,6 +121,4 @@ public class CustomerController {
     public List<Map<Object, Object>> firstLastPaymentDateByClient() {
         return customerService.firstLastPaymentDateByClient();
     }
-
-    // HOLA
 }
