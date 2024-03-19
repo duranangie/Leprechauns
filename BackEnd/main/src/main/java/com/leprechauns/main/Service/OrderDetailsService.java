@@ -2,6 +2,7 @@ package com.leprechauns.main.Service;
 
 import com.leprechauns.main.Entity.DTO.OrderDetailsDTO;
 import com.leprechauns.main.Entity.oderdetails.OrderDetails;
+import com.leprechauns.main.Exceptions.NotFoundEndPoint;
 import com.leprechauns.main.Repository.OrderDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,15 @@ public class OrderDetailsService {
     }
 
     public List<Map<String, Object>> find20ProductTotalUnits(int limit) {
+        if (limit < 0) {
+            throw new IllegalArgumentException("The limit must be greater than zero");
+        }
+
         List<Map<String, Object>> productList = orderDetailRepository.find20ProductTotalUnits(limit);
+
+        if (productList.isEmpty()) {
+            throw new NotFoundEndPoint("No results found for the query");
+        }
 
         productList = productList.stream()
                 .sorted(Comparator.comparing(product -> (String) product.get("productId")))
@@ -55,6 +64,9 @@ public class OrderDetailsService {
     }
 
     public List<Map<String, Object>> findInvoiceMore3000(int maximum) {
+        if (maximum < 0) {
+            throw new IllegalArgumentException("The limit must be greater than zero");
+        }
         return orderDetailRepository.findInvoiceMore3000(maximum);
     }
 }

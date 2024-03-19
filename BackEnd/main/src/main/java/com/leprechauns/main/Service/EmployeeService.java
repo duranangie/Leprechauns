@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.leprechauns.main.Entity.Employee;
 import com.leprechauns.main.Entity.DTO.EmployeeDTO;
+import com.leprechauns.main.Exceptions.NotFoundEndPoint;
 import com.leprechauns.main.Repository.EmployeeRepository;
 
 import jakarta.persistence.EntityManager;
@@ -83,6 +84,9 @@ public class EmployeeService {
 
     public List<EmployeeDTO> findEmployeeWithBoss7(int employeeId) {
         List<Object[]> objectList = employeeRepository.findEmployeeWithBoss7(employeeId);
+        if (objectList.isEmpty()) {
+            throw new NotFoundEndPoint("No employees found that meet the conditions");
+        }
         Map<String, Integer> propertyIndices = Map.of("employeeName", 0, "lastName1", 1, "lastName2", 2, "email", 3);
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
     }

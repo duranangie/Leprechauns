@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.leprechauns.main.Entity.Office;
 import com.leprechauns.main.Entity.DTO.OfficeDTO;
+import com.leprechauns.main.Exceptions.NotFoundEndPoint;
 import com.leprechauns.main.Repository.OfficeRepository;
 
 import java.util.List;
@@ -73,7 +74,10 @@ public class OfficeService {
     }
 
     public List<OfficeDTO> findOfficesSpain(String country) {
-    
+        boolean existsCountry = officeRepository.existsByCountry(country);
+        if (!existsCountry) {
+            throw new NotFoundEndPoint("The country " + country + " doesn't exist in the database.");
+        }
         List<Object[]> objectList = officeRepository.findOfficeSpain(country);
         Map<String, Integer> propertyIndices = Map.of("phone", 0, "city", 1);
         return getOfficeDTOListFromObjectArray(objectList, propertyIndices);
@@ -87,7 +91,10 @@ public class OfficeService {
     }
 
     public List<Object[]> findOfficeAddress(String city) {
-        
+        boolean existsCity= officeRepository.existsByCity(city);
+        if (!existsCity) {
+            throw new NotFoundEndPoint("The city " + city + " doesn't exist in the database.");
+        }
         return officeRepository.findOfficeAddress(city);
     }
 

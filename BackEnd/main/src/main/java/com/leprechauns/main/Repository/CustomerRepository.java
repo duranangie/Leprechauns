@@ -16,7 +16,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     @Query("SELECT c FROM Customer c "
             + "WHERE c.city = :city "
             + "AND (c.sales.employeeId = :sales OR c.sales.employeeId = :employee)")
-    List<Customer> findCustomersMadrid(String city, String sales, int employee);
+    List<Customer> findCustomersMadrid(String city, int sales, int employee);
 
     @Query("SELECT c.customerName FROM Customer c WHERE c.country = :country ")
     List<Customer> findNameSpain(String country);

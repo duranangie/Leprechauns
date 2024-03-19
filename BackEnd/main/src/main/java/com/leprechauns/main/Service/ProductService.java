@@ -21,8 +21,8 @@ public class ProductService {
                 .toList();
     }
 
-    public List<String> findProductStock(String rangeProduct, double amount) {
-        return productRepository.findProductStock(rangeProduct,amount);
+    public List<String> findProductStock(String range, double amount) {
+        return productRepository.findProductStock(range,amount);
     }
 
     public List<String> findNameProduct() {

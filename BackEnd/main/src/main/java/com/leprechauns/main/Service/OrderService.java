@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.leprechauns.main.Entity.Order;
 import com.leprechauns.main.Entity.DTO.OrderDTO;
+import com.leprechauns.main.Exceptions.NotFoundEndPoint;
 import com.leprechauns.main.Repository.OrderRepository;
 
 @Service
@@ -38,10 +39,18 @@ public class OrderService {
     }
 
     public List<Object[]> findOrders(int year) {
+        String yearStr = String.valueOf(year);
+        if (yearStr.length() != 4) {
+            throw new IllegalArgumentException("The year must be exactly 4 digits");
+        }
         return orderRepository.findOrders(year);
     }
 
     public List<Object> findOrdersInJanuary(String deadline) {
+        boolean existsByStatus = orderRepository.existsByStatus(deadline);
+        if(!existsByStatus){
+            throw new NotFoundEndPoint("That status doesn't exist");
+        }
         return orderRepository.findOrdersInJanuary(deadline);
     }
 

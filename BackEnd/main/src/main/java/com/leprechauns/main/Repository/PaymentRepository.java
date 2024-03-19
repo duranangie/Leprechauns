@@ -39,4 +39,6 @@ public interface PaymentRepository extends JpaRepository<Payment, String> {
 
         @Query("SELECT EXTRACT(YEAR FROM payDay) AS year, SUM(total) AS total_payments FROM Payment GROUP BY EXTRACT(YEAR FROM payDay)")
         List<Map<String, Object>> findTotalPaymentPerYear();
+
+        boolean existsByPaymentForm(String paymentForm);
 }

@@ -33,4 +33,6 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
             "GROUP BY o.status " +
             "ORDER BY orderCount DESC")
     List<Object[]> countByEstado();
+
+    boolean existsByStatus(String deadline);
 }

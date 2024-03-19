@@ -36,7 +36,7 @@ public class CustomerController {
     }
 
     @GetMapping("/clientsInMadrid/{city}/{sales}/{employee}")
-    public List<CustomerDTO> findCustomersMadrid(@PathVariable String city, @PathVariable String sales, @PathVariable int employee) {
+    public List<CustomerDTO> findCustomersMadrid(@PathVariable String city, @PathVariable int sales, @PathVariable int employee) {
             return customerService.findCustomersMadrid(city, sales, employee);
     }
 

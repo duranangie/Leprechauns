@@ -29,9 +29,9 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    @GetMapping("/productstock/{rangeProduct}/{amount}")
-    public List<String> findProductStock(@PathVariable String rangeProduct, @PathVariable double amount) {
-        return productService.findProductStock(rangeProduct, amount);
+    @GetMapping("/productstock/{range}/{amount}")
+    public List<String> findProductStock(@PathVariable String range, @PathVariable double amount) {
+        return productService.findProductStock(range, amount);
     }
 
     @GetMapping("/productsName")
