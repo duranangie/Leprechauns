@@ -11,7 +11,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-import static com.leprechauns.main.security.Constans.*;
+import static com.leprechauns.main.security.Constants.*;
 
 @Configuration
 public class JWTAuthorizationConfig {

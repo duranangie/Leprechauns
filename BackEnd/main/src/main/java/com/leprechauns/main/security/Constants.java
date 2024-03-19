@@ -6,13 +6,13 @@ import java.security.Key;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
-public class Constans {
+public class Constants {
     
     // Spring Security
     public static final String LOGIN_URL = "/login";
     public static final String HEADER_AUTHORIZACION_KEY = "Authorization";
     public static final String TOKEN_BEARER_PREFIX = "Bearer ";
-
+    public static final String REGISTER_URL = "/register";
     // JWT
     public static final String SUPER_SECRET_KEY = "VGhpcyBpcyBhIG5vdGUgdG8gdGV4dC4gVGhpcyBlbmNvZGluZyBpcyBhIG5lZWQgdGV4dC4gVGhpcyBpcyBhIG5lZWQgdGV4dC4=";
     public static final long TOKEN_EXPIRATION_TIME = 864_000_000; // 10 day

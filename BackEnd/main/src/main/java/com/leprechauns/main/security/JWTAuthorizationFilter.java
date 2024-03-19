@@ -20,7 +20,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import static com.leprechauns.main.security.Constans.*;
+import static com.leprechauns.main.security.Constants.*;
 
 @Component
 public class JWTAuthorizationFilter extends OncePerRequestFilter{

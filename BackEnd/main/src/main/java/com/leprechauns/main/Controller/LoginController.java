@@ -19,7 +19,7 @@ public class LoginController {
             @RequestParam("user") String user,
             @RequestParam("encryptedPass") String password) {
                 
-
+        
 
         String token = jwtAuthtenticationConfig.getJWTToken(user);
         return new UserProject(user, password, token);
