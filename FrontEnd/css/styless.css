@@ -1,0 +1,83 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    display: flex;
+    background: linear-gradient(245.59deg,#bcd4c0 0%, #93ec9c 28.53%, #5cdb69 75.52%);;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .animated-image {
+    max-width: 100%;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  .animated-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background: linear-gradient(245.59deg,#4d9559 0%, #38703d 28.53%, #133917 75.52%);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    animation: slideIn 1s ease-out;
+  }
+  
+  .animated-button:hover {
+    background:  linear-gradient(245.59deg,#bcd4c0 0%, #93ec9c 28.53%, #5cdb69 75.52%);
+   
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    
+  }
+
+  /* CSS */
+.loading {
+    display: none;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3; 
+    border-top: 5px solid #1d3a22; 
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -25px; 
+    margin-left: -25px; 
+    z-index: 999; 
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+  
