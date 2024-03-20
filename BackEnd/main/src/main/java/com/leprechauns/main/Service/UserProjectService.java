@@ -23,8 +23,7 @@ public class UserProjectService {
     @Autowired
     UserProjectRepository userRepository;
 
-    @Autowired
-    JWTAuthorizationConfig jwtAuthorizationConfig;
+
     public void userValidation(String username, String password) {
         UserProject user = userRepository.findByUsername(username);
         if (user == null || !user.getEncryptedPass().equalsIgnoreCase(password)) {
@@ -35,11 +34,10 @@ public class UserProjectService {
     public Map<Object, Object> registerUser(UserProject user) {
         try {
             userRepository.save(user);
-            String token = jwtAuthorizationConfig.getJWTToken(user.getUsername());
 
             return new LinkedHashMap<>() {{
                 put("message", "User has been registered successfully");
-                put("token", token);
+         
             }};
         } catch (Exception e) {
             throw new InvalidApplicationException("Username already exists");
