@@ -1,6 +1,5 @@
 package com.leprechauns.main.Service;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -10,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.leprechauns.main.Entity.UserProject;
-import com.leprechauns.main.Entity.DTO.UserProjectDTO;
 import com.leprechauns.main.Repository.UserProjectRepository;
-import com.leprechauns.main.security.JWTAuthorizationConfig;
-import com.leprechauns.main.security.JWTAuthorizationFilter;
 
 @Service
 public class UserProjectService {
