@@ -37,7 +37,7 @@ public class UserProjectService {
 
             return new LinkedHashMap<>() {{
                 put("message", "User has been registered successfully");
-         
+
             }};
         } catch (Exception e) {
             throw new InvalidApplicationException("Username already exists");
