@@ -37,7 +37,7 @@ public class CustomerController {
 
     @GetMapping("/clientsInMadrid/{city}/{sales}/{employee}")
     public List<CustomerDTO> findCustomersMadrid(@PathVariable String city, @PathVariable int sales, @PathVariable int employee) {
-            return customerService.findCustomersMadrid(city, sales, employee);
+        return customerService.findCustomersMadrid(city, sales, employee);
     }
 
 
@@ -103,8 +103,8 @@ public class CustomerController {
 
     @GetMapping("/clients-count-city/{city}")
     public int clientsCountInCity(@PathVariable String city) {
-        return customerService.clientsCountInCity(city);    
-        
+        return customerService.clientsCountInCity(city);
+
     }
 
     @GetMapping("/clients-count-in-cities-starting-with-M")

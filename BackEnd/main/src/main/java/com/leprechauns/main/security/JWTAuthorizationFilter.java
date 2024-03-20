@@ -25,41 +25,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import static com.leprechauns.main.security.Constants.*;
 
 @Component
-public class JWTAuthorizationFilter extends OncePerRequestFilter{
-
-    public boolean isJWTValid(String token) {
-        if (!token.startsWith(Constants.TOKEN_BEARER_PREFIX))
-            return false;
-
-        String tokenJWT = token.substring(Constants.TOKEN_BEARER_PREFIX.length()).trim();
-        try {
-            Jwts.parserBuilder()
-                    .setSigningKey(Constants.getSigningKey(Constants.SUPER_SECRET_KEY))
-                    .build()
-                    .parseClaimsJws(tokenJWT)
-                    .getBody();
-            return true;
-        } catch (Exception e) {
-            throw new InvalidTokenException("Token was invalid");
-        }
-    }
-
-    public Claims getClaims(String token) {
-        Claims claims = Jwts.parserBuilder()
-                .setSigningKey(Constants.getSigningKey(Constants.SUPER_SECRET_KEY))
-                .build()
-                .parseClaimsJws(token.replace("Bearer ", ""))
-                .getBody();
-        return claims;
-    }
-
+public class JWTAuthorizationFilter extends OncePerRequestFilter {
     private Claims setSigningKey(HttpServletRequest request) {
         String jwtToken = request.
-                getHeader(Constants.HEADER_AUTHORIZACION_KEY).
-                replace(Constants.TOKEN_BEARER_PREFIX, "");
+                getHeader(HEADER_AUTHORIZACION_KEY).
+                replace(TOKEN_BEARER_PREFIX, "");
 
         return Jwts.parserBuilder()
-                .setSigningKey(Constants.getSigningKey(Constants.SUPER_SECRET_KEY))
+                .setSigningKey(getSigningKey(SUPER_SECRET_KEY))
                 .build()
                 .parseClaimsJws(jwtToken)
                 .getBody();
@@ -67,7 +40,6 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter{
 
     private void setAuthentication(Claims claims) {
 
-        @SuppressWarnings("unchecked")
         List<String> authorities = (List<String>) claims.get("authorities");
 
         UsernamePasswordAuthenticationToken auth =
@@ -79,15 +51,14 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter{
     }
 
     private boolean isJWTValid(HttpServletRequest request, HttpServletResponse res) {
-        String authenticationHeader = request.getHeader(Constants.HEADER_AUTHORIZACION_KEY);
-        if (authenticationHeader == null || !authenticationHeader.startsWith(Constants.TOKEN_BEARER_PREFIX))
+        String authenticationHeader = request.getHeader(HEADER_AUTHORIZACION_KEY);
+        if (authenticationHeader == null || !authenticationHeader.startsWith(TOKEN_BEARER_PREFIX))
             return false;
         return true;
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-            throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
             if (isJWTValid(request, response)) {
                 Claims claims = setSigningKey(request);
@@ -103,8 +74,6 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter{
         } catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException e) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
             response.sendError(HttpServletResponse.SC_FORBIDDEN, e.getMessage());
-            return;
         }
     }
-        
 }

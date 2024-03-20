@@ -15,7 +15,7 @@ import static com.leprechauns.main.security.Constants.*;
 
 @Configuration
 public class JWTAuthorizationConfig {
-    
+
     public String getJWTToken(String username) {
         List<GrantedAuthority> grantedAuthorities = AuthorityUtils
                 .commaSeparatedStringToAuthorityList("ROLE_USER");

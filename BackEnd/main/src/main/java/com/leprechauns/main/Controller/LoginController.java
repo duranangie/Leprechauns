@@ -2,9 +2,12 @@ package com.leprechauns.main.Controller;
 
 import java.util.Map;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,47 +17,33 @@ import com.leprechauns.main.Entity.UserProject;
 import com.leprechauns.main.Entity.DTO.UserProjectDTO;
 import com.leprechauns.main.Service.UserProjectService;
 
+
 @RestController
+@CrossOrigin("*")
+@PreAuthorize("hasRole('ADMIN')")
+@SecurityRequirement(name = "bearerAuth")
 public class LoginController {
+    @Autowired
+    JWTAuthorizationConfig jwtAuthenticationConfig;
 
     @Autowired
-    private UserProjectService service;
-    
-    @Autowired
-    JWTAuthorizationConfig jwtAuthtenticationConfig;
+    UserProjectService userService;
 
-    @PostMapping("login")
-    public ResponseEntity<?> login(
-            @RequestParam("user") String user,
-            @RequestParam("password") String password) {
-        
-        UserProjectDTO dto = service.login(user, password);
+    @PostMapping("/login")
+    public UserProject login(
+            @RequestParam("user") String username,
+            @RequestParam("encryptedPass") String encryptedPass) {
 
-        if (dto == null){
-            throw new UsernameNotFoundException("That user doesn't exist");
-        }
-        return ResponseEntity.ok().body(dto);
+        userService.userValidation(username, encryptedPass);
+        String token = jwtAuthenticationConfig.getJWTToken(username);
+        return new UserProject(username, encryptedPass, token);
     }
 
-    @PostMapping("register")
-    public ResponseEntity<?> register(
-            @RequestParam("user") String user,
-            @RequestParam("password") String password){
+    @PostMapping("/register")
+    public Map<Object, Object> registerUser(
+            @RequestParam("user") String username,
+            @RequestParam("encryptedPass") String encryptedPass) {
 
-        UserProjectDTO dto = service.register(user, password);
-
-        if(dto == null){
-            throw new Error("Sorry, the user can't created");
-        }
-        return ResponseEntity.ok(dto);
+        return userService.registerUser(new UserProject(username, encryptedPass, null));
     }
-
-    
-    @PostMapping("validToken")
-    public ResponseEntity<?> validToken(
-        @RequestParam("token") String token){
-            Map<String, Object> validToken = service.validatedToken(token);
-            return ResponseEntity.ok(validToken);
-        }
-
 }

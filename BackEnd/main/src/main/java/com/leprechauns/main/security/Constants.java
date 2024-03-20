@@ -7,34 +7,16 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
 public class Constants {
-    
+
     // Spring Security
     public static final String LOGIN_URL = "/login";
-    
     public static final String REGISTER_URL = "/register";
-    public static final String VALID_TOKEN = "/validToken";
-    public static final String[] SWAGGER = {
-        "/doc/**",
-        "/swagger-ui.html",
-        "/swagger-ui/**",
-        "/v3/api-docs/**",
-        "/api/v1/auth/**",
-        "/v2/api-docs",
-        "/v3/api-docs/**",
-        "/swagger-resources",
-        "/swagger-resources/**",
-        "/configuration/ui",
-        "/configuration/security",
-        "/swagger-ui/**",
-        "/webjars/**",
-        "/swagger-ui.html" };
-
     public static final String HEADER_AUTHORIZACION_KEY = "Authorization";
     public static final String TOKEN_BEARER_PREFIX = "Bearer ";
-        
+
     // JWT
     public static final String SUPER_SECRET_KEY = "VGhpcyBpcyBhIG5vdGUgdG8gdGV4dC4gVGhpcyBlbmNvZGluZyBpcyBhIG5lZWQgdGV4dC4gVGhpcyBpcyBhIG5lZWQgdGV4dC4=";
-    public static final long TOKEN_EXPIRATION_TIME = 864_000_000; // 10 day
+    public static final long TOKEN_EXPIRATION_TIME = 86_400_000; // 1 day = 86_400_000 - 10 day = 864_000_000
 
     public static Key getSigningKeyB64(String secret) {
         byte[] keyBytes = Decoders.BASE64.decode(secret);
