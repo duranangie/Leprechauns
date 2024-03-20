@@ -1,5 +1,5 @@
 export const loadLogin = (api) => {
-    const container = document.querySelector('#container');
+    const container = document.querySelector('#hero');
     const registerBtn = document.querySelector('#register');
     const loginBtn = document.querySelector('#login');
     const upForm = document.querySelector(".input-group-up");

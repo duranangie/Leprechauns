@@ -64,6 +64,14 @@
     border-radius: 50%;
 }
 
+.input-group-up{
+    top:180px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+}
+
+
 .input-group{
     top:180px;
     position: absolute;
