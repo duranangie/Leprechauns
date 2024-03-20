@@ -6,7 +6,6 @@
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.http.ResponseEntity;
     import org.springframework.security.access.prepost.PreAuthorize;
-    import org.springframework.security.core.userdetails.UsernameNotFoundException;
     import org.springframework.web.bind.annotation.CrossOrigin;
     import org.springframework.web.bind.annotation.PostMapping;
     import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +13,6 @@
     
     import com.leprechauns.main.security.JWTAuthorizationConfig;
     import com.leprechauns.main.Entity.UserProject;
-    import com.leprechauns.main.Entity.DTO.UserProjectDTO;
     import com.leprechauns.main.Service.UserProjectService;
     
     
