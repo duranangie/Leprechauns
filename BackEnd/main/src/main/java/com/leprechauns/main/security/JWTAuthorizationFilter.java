@@ -10,6 +10,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.leprechauns.main.Exceptions.InvalidTokenException;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -25,6 +27,32 @@ import static com.leprechauns.main.security.Constants.*;
 @Component
 public class JWTAuthorizationFilter extends OncePerRequestFilter{
 
+    public boolean isJWTValid(String token) {
+        if (!token.startsWith(Constants.TOKEN_BEARER_PREFIX))
+            return false;
+
+        String tokenJWT = token.substring(Constants.TOKEN_BEARER_PREFIX.length()).trim();
+        try {
+            Jwts.parserBuilder()
+                    .setSigningKey(Constants.getSigningKey(Constants.SUPER_SECRET_KEY))
+                    .build()
+                    .parseClaimsJws(tokenJWT)
+                    .getBody();
+            return true;
+        } catch (Exception e) {
+            throw new InvalidTokenException("Token was invalid");
+        }
+    }
+
+    public Claims getClaims(String token) {
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(Constants.getSigningKey(Constants.SUPER_SECRET_KEY))
+                .build()
+                .parseClaimsJws(token.replace("Bearer ", ""))
+                .getBody();
+        return claims;
+    }
+
     private Claims setSigningKey(HttpServletRequest request) {
         String jwtToken = request.
                 getHeader(HEADER_AUTHORIZACION_KEY).
@@ -39,6 +67,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter{
 
     private void setAuthentication(Claims claims) {
 
+        @SuppressWarnings("unchecked")
         List<String> authorities = (List<String>) claims.get("authorities");
 
         UsernamePasswordAuthenticationToken auth =

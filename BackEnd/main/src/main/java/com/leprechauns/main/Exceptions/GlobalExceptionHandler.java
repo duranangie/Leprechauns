@@ -1,11 +1,16 @@
 package com.leprechauns.main.Exceptions;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.context.request.WebRequest;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -50,4 +55,19 @@ public class GlobalExceptionHandler {
     //     ErrorResponses errorResponse = new ErrorResponses("Authorization error", ex.getMessage());
     //     return new ResponseEntity<>(errorResponse, HttpStatus.UNAUTHORIZED);
     // }
+
+    @ExceptionHandler(InvalidTokenException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ResponseEntity<Object> handleNumberFormatException(Exception ex) {
+        Map<String, Boolean> responseToken = new HashMap<>();
+        responseToken.put("isTokenValid", false);
+        return new ResponseEntity<>(responseToken, HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(UsernameNotFoundException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ResponseEntity<Object> handleUsernameNotFoundException(UsernameNotFoundException ex, WebRequest webRequest) {
+        ErrorResponses errorResponse = new ErrorResponses(ex.getMessage(), webRequest.getDescription(false));
+        return new ResponseEntity<>(errorResponse, HttpStatus.UNAUTHORIZED);
+    }
 }
