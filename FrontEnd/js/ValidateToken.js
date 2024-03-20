@@ -7,7 +7,7 @@ export const validateToken = async (api, type) => {
                 'Authorization': sessionStorage.getItem("token")
             }
         });
-        if (type !== "/validateToken") {
+        if (type !== "/ValidateToken") {
             const data = await response.json();
             displayData(api, data, type);
         }
@@ -30,7 +30,7 @@ export const validateToken = async (api, type) => {
                 clearInterval(timerInterval);
             }
         }).then(() => {
-            window.location.href = "http://127.0.0.1:5500/frontend/views/login.html"
+            window.location.href = "http://127.0.0.1:5500/FrontEnd/Login.html"
         })
     }
 }
