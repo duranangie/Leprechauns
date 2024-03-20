@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.leprechauns.main.Entity.UserProject;
@@ -16,13 +15,10 @@ import com.leprechauns.main.security.JWTAuthorizationFilter;
 @Service
 public class UserProjectService {
     
-    UserProjectDTO userDTO = new UserProjectDTO();
+    
 
     @Autowired
     private UserProjectRepository repo;
-
-    @Autowired
-    private PasswordEncoder passwordHide;
 
     @Autowired 
     JWTAuthorizationConfig authorizationConfig;
@@ -33,8 +29,9 @@ public class UserProjectService {
     public UserProjectDTO login(String username, String password){
         UserProject userLogin = repo.findByUser(username).orElse(null);
         if(userLogin != null ){
-            if (passwordHide.matches(password, userLogin.getPass())){
+            if (password.equals(userLogin.getPass())){
                 String token = authorizationConfig.getJWTToken(userLogin.getUser());
+                UserProjectDTO userDTO = new UserProjectDTO();
                 userDTO.setUser(username);
                 userDTO.setToken(token);
                 return userDTO;
@@ -49,6 +46,7 @@ public class UserProjectService {
         user.setPass(password);
         UserProject response = repo.save(user);
         if (response != null) {
+            UserProjectDTO userDTO = new UserProjectDTO();
             userDTO.setUser(response.getUser());
             userDTO.setToken(authorizationConfig.getJWTToken(response.getUser()));
             return userDTO;

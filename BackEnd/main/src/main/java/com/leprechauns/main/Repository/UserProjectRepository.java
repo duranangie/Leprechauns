@@ -10,6 +10,6 @@ import com.leprechauns.main.Entity.UserProject;
 @Repository
 public interface UserProjectRepository extends JpaRepository<UserProject, Integer> {
 
-    Optional<UserProject> findByUser (String user);
+    Optional<UserProject> findByUser (String username);
     
 }
