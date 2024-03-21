@@ -17,8 +17,8 @@
     
     
     @RestController
-    // @CrossOrigin("*")
-    // @PreAuthorize("hasRole('ADMIN')")
+    @CrossOrigin("*")
+    @PreAuthorize("hasRole('ADMIN')")
     @SecurityRequirement(name = "bearerAuth")
     public class LoginController {
         @Autowired
