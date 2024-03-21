@@ -19,13 +19,13 @@
     <header>
         <a href="#" class="logo"></a>
         <ul class="navlist">
-            <li><a href="#" onclick="showContent('customer')">Customer</a></li>
-            <li><a href="#" onclick="showContent('employee')">Employee</a></li>
-            <li><a href="#" onclick="showContent('office')">Office</a></li>
-            <li><a href="#" onclick="showContent('order')">Order</a></li>
-            <li><a href="#" onclick="showContent('payment')">Payment</a></li>
-            <li><a href="#" onclick="showContent('product')">Product</a></li>
-            <li><a href="#" onclick="showContent('product-range')">Product Range</a></li>
+            <li><a href="#customers" onclick="showContent('customer')" id="customers-nav">Customer</a></li>
+            <li><a href="#employees" onclick="showContent('employee')" id="employee-nav">Employee</a></li>
+            <li><a href="#offices" onclick="showContent('office')" id="office-nav">Office</a></li>
+            <li><a href="#orders" onclick="showContent('order')" id="order-nav">Order</a></li>
+            <li><a href="#payments" onclick="showContent('payment')" id="payment-nav">Payment</a></li>
+            <li><a href="#products" onclick="showContent('product')" id="product-nav">Product</a></li>
+            <li><a href="#productsRange" onclick="showContent('product-range')" id="productRange-nav">Product Range</a></li>
         </ul>
         <div class="bx bx-menu" id="menu-icon"></div>
     </header>
@@ -35,31 +35,70 @@
             <h5>#1 Treding</h5>
             <h4>LEPRECHAUNS</h4>
             <h1>Garden</h1>
-            <p>the best gardening in the country</p>
+            <p>The best gardening in the country</p>
             <a href="#">won</a>
             <a href="#" class="ctaa"><i class="ri-play-fill">more</i></a>
         </div>
 
         <div class="hero-img" id="imageContainer">
-            <img id="mainImage" src="img/st-patrick-day-leprechaun-png.webp" >
+            <!-- !Touch Me To Main Page! -->
+            <a href="index.html"><img id="mainImage" src="img/st-patrick-day-leprechaun-png.webp"></a>
         </div>
-    </section>
-
-    <div class="icons">
-        <a href="#"><i class="ri-instagram-line"></i></a>
-        <a href="#"><i class="ri-youtube-line"></i></a>
-        <a href="#"><i class="ri-dribbble-line"></i></a>
-    </div>
-
-    <div class="scroll-down">
-        <a href="#"><i class="ri-arrow-down-s-fill"></i></a>
-    </div>
-
-    <div id="cardContainer" class="card-container">
-        <!-- Aquí van las tarjetas -->
-    </div>
         
+        <!-- <div class="container">
+            <div class="hero-text" id="textContainer">
+                <h5>#1 Treding</h5>
+                <h4>LEPRECHAUNS</h4>
+                <h1>Garden</h1>
+                <p>The best gardening in the country</p>
+                <a href="#">won</a>
+                <a href="#" class="ctaa"><i class="ri-play-fill">more</i></a>
+            </div>
+
+            <div class="hero-img" id="imageContainer">
+                <!-- !Touch Me To Main Page! 
+                <a href="index.html"><img id="mainImage" src="img/st-patrick-day-leprechaun-png.webp"></a>
+            </div>
+
+            <div class="icons">
+                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="#"><i class="ri-youtube-line"></i></a>
+                <a href="#"><i class="ri-dribbble-line"></i></a>
+            </div>
+        </div> -->
+
+        <div id="customers"></div>
+
+        <div id="products"></div>
+
+        <div id="employees"></div>
+
+        <div id="orderDetails"></div>
+
+        <div id="orders"></div>
+
+        <div id="offices"></div>
+
+        <div id="payments"></div>
+
+        <div id="productsRange"></div>
+
+        <div class="icons">
+            <a href="#"><i class="ri-instagram-line"></i></a>
+            <a href="#"><i class="ri-youtube-line"></i></a>
+            <a href="#"><i class="ri-dribbble-line"></i></a>
+        </div>
+
+        <!-- <div class="scroll-down">
+            <a href="#"><i class="ri-arrow-down-s-fill"></i></a>
+        </div> -->
+
+        
+    </section>
+    
+
     <script src="js/main.js"></script>
+    <script src="js/endpoints/customers.js"></script>
     
 </body>
 </html>
