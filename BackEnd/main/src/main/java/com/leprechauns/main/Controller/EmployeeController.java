@@ -5,8 +5,10 @@ import java.util.Map;
 
 import javax.naming.NameNotFoundException;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,8 +19,10 @@ import com.leprechauns.main.Entity.DTO.EmployeeDTO;
 import com.leprechauns.main.Service.EmployeeService;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/employee")
 @CrossOrigin("*")
+@PreAuthorize("hasRole('ADMIN')")
+@SecurityRequirement(name = "bearerAuth")
 public class EmployeeController  {
     
     private final EmployeeService employeeService;
