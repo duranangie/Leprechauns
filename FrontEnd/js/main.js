@@ -11,9 +11,19 @@ function showContent(category) {
     var textContainer = document.getElementById('textContainer');
     var imageContainer = document.getElementById('imageContainer');
     var cardContainer = document.getElementById('cardContainer');
+    var icons = document.querySelector('icons');
+    var sectionHero = document.querySelector('.hero');
     // Ocultar el contenedor de texto
     textContainer.style.display = 'none';
-    cardContainer.innerHTML = ''; // Limpiar las tarjetas
+    imageContainer.style.display = 'none';
+    // icons.style.display = 'none';
+    // sectionHero.style.display = 'flex';
+    // sectionHero.style.gridTemplateColumns = 'none';
+    // sectionHero.style.alignItems = 'none';
+    // sectionHero.style.removeProperty('gap');
+    // sectionHero.style.flexWrap = 'wrap';
+    // sectionHero .style.justifyContent = 'center';
+    // cardContainer.innerHTML = ''; // Limpiar las tarjetas
 
     // // Mostrar contenido según la categoría
     // switch (category) {
