@@ -1,7 +1,1 @@
-
-export const env = {
-    ssl: "http://",
-    hostName: "localhost",
-    port: "9090"
-
-}
+export const url = `http://localhost:9090`;
