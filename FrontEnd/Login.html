@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+    <script src="../FrontEnd/App.js" type="module" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <title>Login</title>
     <link rel="stylesheet" href="css/styles.css">
@@ -20,7 +22,7 @@
             <div class="social-icons">
                 <img src="img/icon.png">
             </div>
-            <form id="login" class="input-group"  >
+            <form id="login" class="input-group" >
                 <input type="text" class="input-field" placeholder="User Id" required>
                 <input type="password" class="input-field" placeholder="Enter password" required>
                 <input type="checkbox" class="chech-box"><span>Remember Password</span>
@@ -31,7 +33,6 @@
 
             <form id="register" class="input-group-up">
                 <input type="text" class="input-field" placeholder="User Id" required>
-                <input type="email" class="input-field" placeholder="email id" required>
                 <input type="password" class="input-field" placeholder="Enter password" required>
                 <input type="checkbox" class="chech-box"><span>I agree to the terms & conditions</span>
                 <button type="submit" class="submit-btn">Register</button>

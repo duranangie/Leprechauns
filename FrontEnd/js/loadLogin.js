@@ -3,7 +3,7 @@ export const loadLogin = (api) => {
     const registerBtn = document.querySelector('#register');
     const loginBtn = document.querySelector('#login');
     const upForm = document.querySelector(".input-group-up");
-    const inForm = document.querySelector(".input-group-in");
+    const inForm = document.querySelector(".input-group");
 
     registerBtn.addEventListener('click', () => {
         container.classList.add("active");
@@ -71,7 +71,7 @@ async function sendData(data, api, type) {
                 clearInterval(timerInterval);
             }
         }).then(() => {
-            window.location.href = "index.html"
+            window.location.href = "../FrontEnd/index.html"
         })
     } else {
         Swal.fire({

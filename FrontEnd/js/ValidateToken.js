@@ -1,4 +1,4 @@
-import { displayData } from "./displayData.js"
+// import { displayData } from "./displayData.js"
 
 export const validateToken = async (api, type) => {
     try {
@@ -7,7 +7,7 @@ export const validateToken = async (api, type) => {
                 'Authorization': sessionStorage.getItem("token")
             }
         });
-        if (type !== "/ValidateToken") {
+        if (type !== "/validateToken") {
             const data = await response.json();
             displayData(api, data, type);
         }
