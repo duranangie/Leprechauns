@@ -26,6 +26,7 @@
             <li><a href="#payments" onclick="showContent('payment')" id="payment-nav">Payment</a></li>
             <li><a href="#products" onclick="showContent('product')" id="product-nav">Product</a></li>
             <li><a href="#productsRange" onclick="showContent('product-range')" id="productRange-nav">Product Range</a></li>
+            <li><a href="#orderDetails" onclick="showContent('order-details')" id="orderDetails-nav">Order Details</a></li>
         </ul>
         <div class="bx bx-menu" id="menu-icon"></div>
     </header>
@@ -67,21 +68,21 @@
             </div>
         </div> -->
 
-        <div id="customers"></div>
+        <div id="customers" class="customers"></div>
 
-        <div id="products"></div>
+        <div id="products" class="products" ></div>
 
-        <div id="employees"></div>
+        <div id="employees" class="employees"></div>
 
-        <div id="orderDetails"></div>
+        <div id="orderDetails" class="orderDetails"></div>
 
-        <div id="orders"></div>
+        <div id="orders" class="orders"></div>
 
-        <div id="offices"></div>
+        <div id="offices" class="offices"></div>
 
-        <div id="payments"></div>
+        <div id="payments" class="payments"></div>
 
-        <div id="productsRange"></div>
+        <div id="productsRange" class="productsRange"></div>
 
         <div class="icons">
             <a href="#"><i class="ri-instagram-line"></i></a>
@@ -99,6 +100,12 @@
 
     <script src="js/main.js"></script>
     <script src="js/endpoints/customers.js"></script>
-    
+    <script src="js/endpoints/offices.js"></script>
+    <script src="js/endpoints/products.js"></script>
+    <script src="js/endpoints/employees.js"></script>
+    <script src="js/endpoints/orderDetails.js"></script>
+    <script src="js/endpoints/orders.js"></script>
+    <script src="js/endpoints/payments.js"></script>
+
 </body>
 </html>
