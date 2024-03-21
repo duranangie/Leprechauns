@@ -1,6 +1,6 @@
 
-import { loadLogin } from "../FrontEnd/js/loadLogin.js";
-import { loadMain } from "../FrontEnd/js/loadMain.js";
+import { loadLogin } from "./js/loadLogin.js";
+import { loadMain } from "./js/loadMain.js";
 
 const api = "http://localhost:9090"
 

@@ -31,13 +31,29 @@ async function sendData(data, api, type) {
     params.append('user', data.username);
     params.append('encryptedPass', data.password);
 
-    const res = await (await fetch(api + type, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: params
-    })).json();
+    const res = await fetch("http://localhost:9090/login?user=luca&encryptedPass=123", {
+        method: "POST"
+    });
+    console.log(res);
+
+//     const res = await fetch('http://localhost:9090/login?user=sandra&encryptedPass=pwd', {
+//         method: 'POST',
+//         headers: {
+//           'Accept': 'application/hal+json',
+//           'Content-Type': 'application/x-www-form-urlencoded'
+//         },
+//         body: JSON.stringify({})
+// })
+
+
+
+    // const res = await (await fetch(api + type, {
+    //     method: "POST",
+    //     headers: {
+    //         'Content-Type': 'application/x-www-form-urlencoded'
+    //     },
+    //     body: params
+    // })).json();
 
     if (res.error) {
         Swal.fire({
