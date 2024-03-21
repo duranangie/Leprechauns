@@ -1,9 +1,9 @@
 export const loadLogin = (api) => {
-    const container = document.querySelector('#hero');
+    const container = document.querySelector('#container');
     const registerBtn = document.querySelector('#register');
     const loginBtn = document.querySelector('#login');
-    const upForm = document.querySelector(".input-group-up");
-    const inForm = document.querySelector(".input-group");
+    const upForm = document.querySelector(".up-form");
+    const inForm = document.querySelector(".in-form");
 
     registerBtn.addEventListener('click', () => {
         container.classList.add("active");
@@ -31,29 +31,14 @@ async function sendData(data, api, type) {
     params.append('user', data.username);
     params.append('encryptedPass', data.password);
 
-    const res = await fetch("http://localhost:9090/login?user=luca&encryptedPass=123", {
-        method: "POST"
-    });
-    console.log(res);
 
-//     const res = await fetch('http://localhost:9090/login?user=sandra&encryptedPass=pwd', {
-//         method: 'POST',
-//         headers: {
-//           'Accept': 'application/hal+json',
-//           'Content-Type': 'application/x-www-form-urlencoded'
-//         },
-//         body: JSON.stringify({})
-// })
-
-
-
-    // const res = await (await fetch(api + type, {
-    //     method: "POST",
-    //     headers: {
-    //         'Content-Type': 'application/x-www-form-urlencoded'
-    //     },
-    //     body: params
-    // })).json();
+    const res = await (await fetch(api + type, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: params
+    })).json();
 
     if (res.error) {
         Swal.fire({
