@@ -1,57 +1,65 @@
 package com.leprechauns.main.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "usuario")
 public class UserProject {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
+    @JsonIgnore
+    private Integer id;
 
     @JsonIgnore
-    private String user;
+    @Column(unique = true, nullable = false)
+    private String username;
 
     @JsonIgnore
-    private String pass;
+    @Column(nullable = false)
+    private String encryptedPass;
 
-    public String getUser() {
-        return this.user;
+    @Transient
+    private String token;
+
+    public UserProject() {
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public UserProject(String username, String encryptedPass, String token) {
+        this.username = username;
+        this.encryptedPass = encryptedPass;
+        this.token = token;
     }
 
-    public String getPass() {
-        return this.pass;
+    public Integer getId() {
+        return id;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-    
-    public Integer getUserId() {
-        return userId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public String getUsername() {
+        return username;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-            ", id='" + getUserId() + "'" +
-            " user='" + getUser() + "'" +
-            ", pass='" + getPass() + "'" +
-            "}";
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEncryptedPass() {
+        return encryptedPass;
+    }
+
+    public void setEncryptedPass(String encryptedPass) {
+        this.encryptedPass = encryptedPass;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
