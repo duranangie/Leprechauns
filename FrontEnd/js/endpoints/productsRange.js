@@ -15,6 +15,13 @@ console.log(data);
     let payments8 = document.querySelector("#payments");
     let productsRange8 = document.querySelector("#productsRange");
 
+    var hero = document.querySelector(".icons");
+    var section = document.querySelector(".hero");   
+
+    hero.style.display = 'none';
+    section.style.padding = '0 3%';
+    section.style.transition = '.2s';
+
     officesSection8.style.display = 'none';
     productSection8.style.display = 'none';
     employeeSection8.style.display = 'none';

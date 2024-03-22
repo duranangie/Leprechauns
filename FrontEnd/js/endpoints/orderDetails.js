@@ -15,6 +15,13 @@ let orderDetailsSection = document.querySelector("#orderDetails");
     let payments4 = document.querySelector("#payments");
     let productsRange4 = document.querySelector("#productsRange");
 
+    var hero = document.querySelector(".icons");
+    var section = document.querySelector(".hero");   
+
+    hero.style.display = 'none';
+    section.style.padding = '0 3%';
+    section.style.transition = '.2s';
+
     officesSection4.style.display = 'none';
     productSection4.style.display = 'none';
     employeeSection4.style.display = 'none';

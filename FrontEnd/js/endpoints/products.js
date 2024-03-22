@@ -21,7 +21,6 @@ hero.style.display = 'none';
 section.style.padding = '0 3%';
 section.style.transition = '.2s';
 
-
 officesSection7.style.display = 'none';
 productSection7.style.display = '';
 employeeSection7.style.display = 'none';

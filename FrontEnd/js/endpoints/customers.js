@@ -68,33 +68,8 @@ export const customers = async (api, data , type) => {
         </div>
         `;
     });
-    customersSection.innerHTML = `
-    <div id="container">
-    <ul> 
-    <li>
-    <button id="query-1-customers">Query1</button></li>
-    <li>Query2</li>
-    <li>Query3</li>
-    <li>Query4</li>
-    <li>Query5</li>
-    <li>Query6</li>
-    <li>Query7</li>
-    <li>Query8</li>
-    <li>Query9</li>
-    <li>Query10</li>
-    <li>Query11</li>
-    <li>Query12</li>
-    <li>Query13</li>
-    <li>Query14</li>
-    <li>Query15</li>
-    <li>Query16</li>
-    <li>Query17</li>
-    <li>Query18</li>
-    <li>Query19</li>
-    <li>Query20</li>
-    </ul>
-    </div>
-    `
+
+    
     customersSection.insertAdjacentHTML("beforeend", `${customerHTML.join("")}`);
 
 
@@ -185,5 +160,43 @@ document.getElementById("query-1-customers").addEventListener("click", async () 
 //                 </div>
 //             `
 //         }
+//     }
+// })
+
+ // query 3
+//  document.getElementById("query-3-customers").addEventListener("click", async () => {
+//     const res = await (await fetch(api + type + "/clients-in-madrid-with-specific-representatives", {
+//         headers: {
+//             'Authorization': sessionStorage.getItem('token')
+//         }
+//     })).json();
+
+//     const customerHTML = res.map(customer =>
+//         `<div class="content-data medium">
+//             <div class="box">
+//                 <h2 class="title">${customer.customerName}</h2>
+//                 <div class="info">
+//                     <span><strong>Customer Id:</strong> ${customer.customerCode}</span>
+//                     <span><strong>Phone:</strong> ${customer.phone}</span>
+//                     <span><strong>Address:</strong> ${customer.addressLine1}</span>
+//                     <span><strong>Location:</strong> ${customer.city}, ${customer.country}</span>
+//                 </div>
+//             </div>
+//         </div>`
+//     ).join("");
+
+//     if (customerHTML.length === 0) {
+//         main.innerHTML = `
+//             <h1>Returns a list with all the clients who are from the city of Madrid and whose sales representative has the employee code 11 or 30.</h1>
+//             <h2 style="color: #81D43A; text-align: center; font-size: 4rem; margin-bottom: 50px">There is no data to show</h2>
+//             <img src="http://127.0.0.1:5500/frontend/resources/nodata.jpg" alt="NO DATA TO SHOW" style="min-width: 250px; width: 50%; height: 50%; display: block; margin: 0 auto;"/>
+//         `
+//     } else {
+//         main.innerHTML = `
+//             <h1>Returns a list with all the clients who are from the city of Madrid and whose sales representative has the employee code 11 or 30.</h1>
+//             <div class="data" id="content-api">
+//                 ${customerHTML}
+//             </div>
+//         `
 //     }
 // })

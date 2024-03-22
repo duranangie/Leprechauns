@@ -13,6 +13,13 @@ export const orders = async (api, data , type) => {
     let payments5 = document.querySelector("#payments");
     let productsRange5 = document.querySelector("#productsRange");
 
+    var hero = document.querySelector(".icons");
+    var section = document.querySelector(".hero");   
+
+    hero.style.display = 'none';
+    section.style.padding = '0 3%';
+    section.style.transition = '.2s';
+
     officesSection5.style.display = 'none';
     productSection5.style.display = 'none';
     employeeSection5.style.display = 'none';

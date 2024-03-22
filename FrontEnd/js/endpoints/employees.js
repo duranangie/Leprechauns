@@ -2,17 +2,24 @@
 
 export const employees = async (api, data, type) => {
 
-let employeesSection = document.querySelector("#employees");
+    let employeesSection = document.querySelector("#employees");
 
-let header4 = document.querySelector(".navlist");
-let customersSection2 = document.querySelector("#customers");
-let officesSection2 = document.querySelector("#offices");
-let productSection2 = document.querySelector("#products");
-let employeeSection2 = document.querySelector("#employees");
-let orderDetails2 = document.querySelector("#orderDetails");
-let orders2 = document.querySelector("#orders");
-let payments2 = document.querySelector("#payments");
-let productsRange2 = document.querySelector("#productsRange");
+    let header4 = document.querySelector(".navlist");
+    let customersSection2 = document.querySelector("#customers");
+    let officesSection2 = document.querySelector("#offices");
+    let productSection2 = document.querySelector("#products");
+    let employeeSection2 = document.querySelector("#employees");
+    let orderDetails2 = document.querySelector("#orderDetails");
+    let orders2 = document.querySelector("#orders");
+    let payments2 = document.querySelector("#payments");
+    let productsRange2 = document.querySelector("#productsRange");
+
+    var hero = document.querySelector(".icons");
+    var section = document.querySelector(".hero");
+
+    hero.style.display = 'none';
+    section.style.padding = '0 3%';
+    section.style.transition = '.2s';
 
     officesSection2.style.display = 'none';
     productSection2.style.display = 'none';
@@ -32,8 +39,8 @@ let productsRange2 = document.querySelector("#productsRange");
     productsRange2.innerHTML = "";
     customersSection2.innerHTML = "";
 
-    const employeeHTML = data.map((employee)=> {
-    return /*html*/`
+    const employeeHTML = data.map((employee) => {
+        return /*html*/`
     
         <div id="cardContainer" class="card-container">
 
