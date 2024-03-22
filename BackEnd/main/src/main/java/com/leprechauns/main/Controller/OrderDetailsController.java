@@ -3,7 +3,9 @@ package com.leprechauns.main.Controller;
 import java.util.List;
 import java.util.Map;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +18,8 @@ import com.leprechauns.main.Service.OrderDetailsService;
 @RestController
 @RequestMapping("/orderdetails")
 @CrossOrigin("*")
+@PreAuthorize("hasRole('ADMIN')")
+@SecurityRequirement(name = "bearerAuth")
 public class OrderDetailsController {
 
     public final OrderDetailsService orderDetailsService;
