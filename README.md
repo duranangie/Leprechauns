@@ -164,3 +164,145 @@ Overall, this MySQL database provides an organized structure to support the comp
 ### Return a list with the name, surname, and email of employees whose boss has a boss code equal to 7.
 - **URL:** http://localhost:9090/employees/
 
+
+## Employees
+
+### Boss Details
+- **Endpoint:** `http://localhost:8080/employees/boss-details`
+- **Description:** Return the position name, name, surname, and email of the company's boss.
+
+### Non-Sales Representatives Details
+- **Endpoint:** `http://localhost:8080/employees/non-sales-representatives-details`
+- **Description:** Return a list with the name, surname, and position of those employees who are not sales representatives.
+
+### Employees with Supervisors
+- **Endpoint:** `http://localhost:8080/employees/employees-with-supervisors`
+- **Description:** Return a list with the name of each employee, the name of their boss, and the name of their boss's boss.
+
+### Employees without Office
+- **Endpoint:** `http://localhost:8080/employees/employees-without-office`
+- **Description:** Return a list showing only the employees who do not have an associated office.
+
+### Employees without Clients
+- **Endpoint:** `http://localhost:8080/employees/employees-without-clients`
+- **Description:** Return a list showing only the employees who do not have an associated client.
+
+### Employees without Clients and Office Details
+- **Endpoint:** `http://localhost:8080/employees/employees-without-clients-and-office-details`
+- **Description:** Return a list showing the employees who do not have an associated office and those who do not have an associated client.
+
+### Employees without Office and Clients
+- **Endpoint:** `http://localhost:8080/employees/employees-without-office-and-clients`
+- **Description:** Return a list with the data of employees who do not have associated clients and the name of their associated boss.
+
+### Total Employees
+- **Endpoint:** `http://localhost:8080/employees/total-employees`
+- **Description:** Return the total number of employees in the company.
+
+## Payments
+
+### Payment by Paypal
+- **Endpoint:** `http://localhost:8080/payments/payment-by-paypal`
+- **Description:** Return a list with all payments made in the year 2008 through Paypal, sorted from highest to lowest.
+
+### Way to Pay
+- **Endpoint:** `http://localhost:8080/payments/way-to-pay`
+- **Description:** Return a list with all payment methods that appear in the payment table, without repetitions.
+
+### Average Payment
+- **Endpoint:** `http://localhost:8080/payments/average-payment`
+- **Description:** Calculate the average payment in 2009.
+
+### Total Payment by Year
+- **Endpoint:** `http://localhost:8080/payments/total-payment-by-year`
+- **Description:** Show the total sum of all payments made for each of the years appearing in the payments table.
+
+## Orders
+
+### Find Status
+- **Endpoint:** `http://localhost:8080/orders/find-status`
+- **Description:** Return a list with the different statuses an order can go through.
+
+### Order Delivered Late
+- **Endpoint:** `http://localhost:8080/orders/order-delivered-late`
+- **Description:** Return a list of orders that have not been delivered on time.
+
+### Order Delivered Late At Least
+- **Endpoint:** `http://localhost:8080/orders/order-delivered-late-at-least`
+- **Description:** Return a list of orders whose delivery date has been at least two days before the expected date.
+
+### Rejected in Year
+- **Endpoint:** `http://localhost:8080/orders/rejected-in-year/{year}`
+- **Description:** Return a list of orders that were rejected in a specific year.
+
+### Delivered January
+- **Endpoint:** `http://localhost:8080/orders/delivered-january`
+- **Description:** Return a list of orders that have been delivered in the month of January of any year.
+
+### Count by State
+- **Endpoint:** `http://localhost:8080/orders/count-by-state`
+- **Description:** Count the number of orders in each state, sorted in descending order by the number of orders.
+
+## Products
+
+### Gama Name
+- **Endpoint:** `http://localhost:8080/products/gama-name/{gama}`
+- **Description:** Return a list of products belonging to a specific range and having more than 100 units in stock, ordered by their selling price.
+
+### Not in Order
+- **Endpoint:** `http://localhost:8080/products/not-in-order`
+- **Description:** Return a list of products that have never appeared in an order.
+
+### Not in Order with Name
+- **Endpoint:** `http://localhost:8080/products/not-in-order-with-name`
+- **Description:** Return a list of products that have never appeared in an order, displaying their name, description, and image.
+
+### Prices Range
+- **Endpoint:** `http://localhost:8080/products/prices-range`
+- **Description:** Calculate the selling price of the most expensive and cheapest product in a single query.
+
+### Top 20 Best Selling
+- **Endpoint:** `http://localhost:8080/products/top-20-best-selling`
+- **Description:** Return a list of the top 20 best-selling products and the total number of units sold for each one.
+
+## Order Details
+
+### Total Revenue
+- **Endpoint:** `http://localhost:8080/orderdetails/total-revenue`
+- **Description:** Calculate the total revenue the company has had, including taxable base, VAT, and total invoiced.
+
+### Total Revenue by Product
+- **Endpoint:** `http://localhost:8080/orderdetails/total-revenue-by-product`
+- **Description:** Calculate the total revenue grouped by product code.
+
+### Total Revenue by Product by OR
+- **Endpoint:** `http://localhost:8080/orderdetails/total-revenue-by-product-by-or`
+- **Description:** Calculate the total revenue grouped by product code, filtered by codes starting with 'OR'.
+
+### List Total Sales Product Over
+- **Endpoint:** `http://localhost:8080/orderdetails/list-total-sales-product-over`
+- **Description:** List the total sales of products that have invoiced more than 3000 euros.
+
+### Number of Product per Order
+- **Endpoint:** `http://localhost:8080/orderdetails/number-of-product-per-order`
+- **Description:** Calculate the number of different products in each order.
+
+### Total Amount per Order
+- **Endpoint:** `http://localhost:8080/orderdetails/total-amount-per-order`
+- **Description:** Calculate the sum of the total quantity of all products appearing in each order.
+
+## Gama Product
+
+### List Gamas
+- **Endpoint:** `http://localhost:8080/gamaproducts/list-gamas`
+- **Description:** Return a list of the different product gamas that each client has purchased.
+
+## Backend
+
+### Description
+The backend of this project developed in Spring Boot acts as the central engine that handles business logic and data management.
+
+### Class Diagram
+- [Class Diagram](link_to_diagram)
+
+
