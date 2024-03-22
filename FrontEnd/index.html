@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:ital,wght@0,300;0,400;1,500;1,700&display=swap" rel="stylesheet">
+<script src="./App.js" type="module" defer></script>
+<script src="./js/main.js" type="module" defer></script>
 
 </head>
 <body>
@@ -19,7 +21,7 @@
     <header>
         <a href="#" class="logo"></a>
         <ul class="navlist">
-            <li><a href="#customers" onclick="showContent('customer')" id="customers-nav">Customer</a></li>
+            <li><a href="#customers" id="customers-nav">Customer</a></li>
             <li><a href="#employees" onclick="showContent('employee')" id="employee-nav">Employee</a></li>
             <li><a href="#offices" onclick="showContent('office')" id="office-nav">Office</a></li>
             <li><a href="#orders" onclick="showContent('order')" id="order-nav">Order</a></li>
@@ -97,15 +99,5 @@
         
     </section>
     
-
-    <script src="js/main.js"></script>
-    <script src="js/endpoints/customers.js"></script>
-    <script src="js/endpoints/offices.js"></script>
-    <script src="js/endpoints/products.js"></script>
-    <script src="js/endpoints/employees.js"></script>
-    <script src="js/endpoints/orderDetails.js"></script>
-    <script src="js/endpoints/orders.js"></script>
-    <script src="js/endpoints/payments.js"></script>
-
 </body>
 </html>
