@@ -12,7 +12,7 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: rgb(9, 74, 136);
+    background: #094a88;
 }
 
 header {
@@ -370,6 +370,20 @@ ul .key {
 ul .value {
     font-size: 20px;
     color: #000;
+}
+
+#searchInput {
+    border-radius: 10px;
+    margin-left: 50px;
+    background: #E8FCCF;
+    padding: 15px;
+    border-style: dotted;
+}
+
+#logout{
+    color:#FFA62B;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
 }
 
 @media (max-width: 1535px) {
