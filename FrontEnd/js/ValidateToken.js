@@ -1,16 +1,15 @@
-// import { displayData } from "./displayData.js"
+import { displayData } from "./displayData.js"
 
 export const validateToken = async (api, type) => {
     try {
-        const response = await fetch(api + type, {
+        const data =await (await fetch(api + type, {
             headers: {
                 'Authorization': sessionStorage.getItem("token")
             }
-        });
-        if (type !== "/validateToken") {
-            const data = await response.json();
-            displayData(api, data, type);
-        }
+        })).json()
+
+        displayData(api, data, type);
+
     } catch (error) {
         let timerInterval;
         Swal.fire({
