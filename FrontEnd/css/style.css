@@ -231,6 +231,42 @@ section {
     padding-bottom: 4rem;
 }
 
+.orderDetails {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: 4rem;
+    gap: 10px;
+    margin-left: 4%;
+    padding-bottom: 4rem;
+}
+
+.orders {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: 4rem;
+    gap: 10px;
+    margin-left: 4%;
+    padding-bottom: 4rem;
+}
+
+.payments {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: 4rem;
+    gap: 10px;
+    margin-left: 4%;
+    padding-bottom: 4rem;
+}
+
+.productsRange {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: 4rem;
+    gap: 10px;
+    margin-left: 4%;
+    padding-bottom: 4rem;
+}
+
 .employees {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
