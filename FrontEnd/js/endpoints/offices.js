@@ -1,50 +1,61 @@
 
-const url2 = `http://localhost:9090`;
 
+export const offices = async (api, data, type) =>{
+    let officesSection = document.querySelector("#offices");
 
-let officesSection = document.querySelector("#offices");
-let header2 = document.querySelector(".navlist");
-let customersSection2 = document.querySelector("#customers");
-let productSection2 = document.querySelector("#products");
-let employeeSection2 = document.querySelector("#employees");
+    let header2 = document.querySelector(".navlist");
+    let customersSection3 = document.querySelector("#customers");
+    let officesSection3 = document.querySelector("#offices");
+    let productSection3 = document.querySelector("#products");
+    let employeeSection3 = document.querySelector("#employees");
+    let orderDetails3 = document.querySelector("#orderDetails");
+    let orders3 = document.querySelector("#orders");
+    let payments3 = document.querySelector("#payments");
+    let productsRange3 = document.querySelector("#productsRange");
 
-document.getElementById("office-nav").addEventListener("click", async(e)=>{
+    officesSection3.style.display = '';
+    productSection3.style.display = 'none';
+    employeeSection3.style.display = 'none';
+    orderDetails3.style.display = 'none';
+    orders3.style.display = 'none';
+    payments3.style.display = 'none';
+    productsRange3.style.display = 'none';
+    customersSection3.style.display = 'none';
 
-    customersSection2.style.display = 'none';
-    let rel = await (await fetch(`${url2}/offices`, {
-        method: "GET"
-    })).json();
-    
-    employeeSection2.innerHTML = "";
-    productSection2.innerHTML = "";
-    customersSection2.innerHTML = "";
-    officesSection.innerHTML = "";
+    productSection3.innerHTML = "";
+    employeeSection3.innerHTML = "";
+    officesSection3.innerHTML = "";
+    orderDetails3.innerHTML = "";
+    orders3.innerHTML = "";
+    payments3.innerHTML = "";
+    productsRange3.innerHTML = "";
+    customersSection3.innerHTML = "";
 
-    rel = rel.map((res)=> {
-    return /*html*/`
-    
-        <div id="cardContainer" class="card-container">
+        const officeHTML = data.map((office)=> {
+        return /*html*/`
+        
+            <div id="cardContainer" class="card-container">
 
-            <div class=" face front">
-                <h1><center> ${res.officeCode} </center></h1>
-                <img src="img/OFFICE.jpg" alt="">
-                
+                <div class=" face front">
+                    <h1><center> ${office.officeCode} </center></h1>
+                    <img src="img/OFFICE.jpg" alt="">
+                    
+                </div>
+                <div class="face back">
+                    
+                    <ul>
+                        <li><span class="key">City:</span> <span class="value">${office.city}</span></li>
+                        <li><span class="key">Country:</span> <span class="value">${office.country}</span></li>
+                        <li><span class="key">Region:</span> <span class="value">${office.region}</span></li>
+                        <li><span class="key">Postal Code:</span> <span class="value">${office.postalCode}</span></li>
+                        <li><span class="key">Phone:</span> <span class="value">${office.phone}</span></li>
+                        <li><span class="key">Address Line 1:</span> <span class="value">${office.addressLine1}</span></li>
+                        <li><span class="key">Address Line 2:</span> <span class="value">${office.addressLine2}</span></li>
+                    </ul>
+                </div>
             </div>
-            <div class="face back">
-                
-                <ul>
-                    <li><span class="key">City:</span> <span class="value">${res.city}</span></li>
-                    <li><span class="key">Country:</span> <span class="value">${res.country}</span></li>
-                    <li><span class="key">Region:</span> <span class="value">${res.region}</span></li>
-                    <li><span class="key">Postal Code:</span> <span class="value">${res.postalCode}</span></li>
-                    <li><span class="key">Phone:</span> <span class="value">${res.phone}</span></li>
-                    <li><span class="key">Address Line 1:</span> <span class="value">${res.addressLine1}</span></li>
-                    <li><span class="key">Address Line 2:</span> <span class="value">${res.addressLine2}</span></li>
-                </ul>
-            </div>
-        </div>
-        `;
-    });
+            `;
+        });
 
-    officesSection.insertAdjacentHTML("beforeend", `${rel.join("")}`);
-})
+        officesSection.insertAdjacentHTML("beforeend", `${officeHTML.join("")}`);
+}

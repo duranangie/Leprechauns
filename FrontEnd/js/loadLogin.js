@@ -1,3 +1,4 @@
+
 export const loadLogin = (api) => {
     const container = document.querySelector('#container');
     const registerBtn = document.querySelector('#register');

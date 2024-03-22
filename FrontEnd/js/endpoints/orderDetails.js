@@ -1,52 +1,60 @@
 
 
-
-const url5 = `http://localhost:9090`;
+export const orderDetails = async(api, data, type) => {
 
 
 let orderDetailsSection = document.querySelector("#orderDetails");
-let header5 = document.querySelector(".navlist");
-let customersSection5 = document.querySelector("#customers");
-let officesSection5 = document.querySelector("#offices");
-let productSection5 = document.querySelector("#products");
-let employeeSection5 = document.querySelector("#employees")
 
-document.getElementById("orderDetails-nav").addEventListener("click", async(e)=>{
+    let header5 = document.querySelector(".navlist");
+    let customersSection4 = document.querySelector("#customers");
+    let officesSection4 = document.querySelector("#offices");
+    let productSection4 = document.querySelector("#products");
+    let employeeSection4 = document.querySelector("#employees");
+    let orderDetails4 = document.querySelector("#orderDetails");
+    let orders4 = document.querySelector("#orders");
+    let payments4 = document.querySelector("#payments");
+    let productsRange4 = document.querySelector("#productsRange");
 
+    officesSection4.style.display = 'none';
+    productSection4.style.display = 'none';
+    employeeSection4.style.display = 'none';
+    orderDetails4.style.display = '';
+    orders4.style.display = 'none';
+    payments4.style.display = 'none';
+    productsRange4.style.display = 'none';
+    customersSection4.style.display = 'none';
 
-    let rel = await (await fetch(`${url5}/orderdetails`, {
-        method: "GET"
-    })).json();
+    productSection4.innerHTML = "";
+    employeeSection4.innerHTML = "";
+    officesSection4.innerHTML = "";
+    orderDetails4.innerHTML = "";
+    orders4.innerHTML = "";
+    payments4.innerHTML = "";
+    productsRange4.innerHTML = "";
+    customersSection4.innerHTML = "";
 
-    // customersSection2.style.display = 'none';
-    employeeSection5.innerHTML = "";
-    productSection5.innerHTML = "";
-    officesSection5.innerHTML = "";
-    customersSection5.innerHTML = "";
-    orderDetailsSection.innerHTML = "";
-
-    rel = rel.map((res)=> {
+    const orderDetailHTML = data.map((orderDetail)=> {
     return /*html*/`
     
         <div id="cardContainer" class="card-container">
 
             <div class=" face front">
-                <h1><center>Order Code: ${res.orderCode} </center></h1>
-                <h1><center>Product Code: ${res.productCode} </center></h1>
+                <h1><center>Order Code: ${orderDetail.orderCode} </center></h1>
+                <h1><center>Product Code: ${orderDetail.productCode} </center></h1>
                 <img src="img/ORDERDETAIL.jpg" alt="">
                 
             </div>
             <div class="face back">
                 
                 <ul>
-                    <li><span class="key">Amount:</span> <span class="value">${res.amount}</span></li>
-                    <li><span class="key">Unit Price:</span> <span class="value">${res.unitPrice}</span></li>
-                    <li><span class="key">Number Line:</span> <span class="value">${res.numberLine}</span></li>
+                    <li><span class="key">Amount:</span> <span class="value">${orderDetail.amount}</span></li>
+                    <li><span class="key">Unit Price:</span> <span class="value">${orderDetail.unitPrice}</span></li>
+                    <li><span class="key">Number Line:</span> <span class="value">${orderDetail.numberLine}</span></li>
                 </ul>
             </div>
         </div>
         `;
     });
 
-    orderDetailsSection.insertAdjacentHTML("beforeend", `${rel.join("")}`);
-})
+    orderDetailsSection.insertAdjacentHTML("beforeend", `${orderDetailHTML.join("")}`);
+}
